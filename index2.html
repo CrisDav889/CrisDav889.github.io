@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery (Bootstrap JS requiere jQuery) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <title>Fondo Estrellado con Área de Texto</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: linear-gradient(to top, #010329, #000005);
+            --text-bg: rgba(255, 255, 255, 0.8);
+            --text-color: #000;
+        }
+
+        body {
+            background-image: var(--color-bg);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .text-area {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-bg);
+            color: var(--text-color);
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            font-family: Arial, sans-serif;
+            font-size: 1.1em;
+            line-height: 1.5;
+            overflow-y: auto;
+            max-height: 200px; /* Limita la altura del área de texto */
+        }
+
+        .stars {
+            position: absolute;
+            background: white;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="star-container"></div>
+
+    <!-- Área de texto para la carta -->
+    <div class="text-area" contenteditable="true">
+        Realmente me siento un como ansioso por entregarle este detalle que a pesar de no ser materia me llevó mucho esfuerzo y varias lineas de
+        código, le prometo que cuando la vea nuevamente le entregaré sus flores amarillas, la amo Pamelita.     :)
+    </div>
+
+    <script>
+        const starContainer = document.getElementById('star-container');
+
+        function createStars() {
+            const starCount = 100;
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('stars');
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = star.style.width;
+                starContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>
