@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cristhian Dávila</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0f1020;
+            --secondary-dark: #1a1a2e;
+            --accent-color: #6a5acd;
+            --text-light: #e0e0e0;
+        }
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            color: var(--text-light);
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        .glassmorphic {
+            background: rgba(106, 90, 205, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            border-radius: 15px;
+        }
+        .navbar {
+            background: rgba(15, 16, 32, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .section-header {
+            position: relative;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(106, 90, 205, 0.3);
+        }
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-progress {
+            background: var(--accent-color);
+            height: 100%;
+            transition: width 1.5s ease-in-out;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="container text-center py-5 mt-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <center><img src="i'm.jpg" width="180px" style="border-radius: 50%;"></center>
+                <h1 class="display-4 animate__animated animate__fadeInDown">Cristhian Dávila</h1>
+                <p class="lead animate__animated animate__fadeInUp">Desarrollador Proactivo</p>
+                <p>Me encanta programar en entornos web o dedicarme a la ciencia de datos con Python.
+                    Tabién tengo experiencia utilizando librerías en python.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section id="proyectos" class="container py-5">
+        <h2 class="text-center section-header mb-5">Proyectos</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card project-card glassmorphic h-100">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #6a5acd;">Simulador de Compras Web</h5>
+                        <img src="shop_sim.png" width="380px" style="border-radius: 15px;">
+                        <p style="color: #e0e0e0;">Soluciones logicas con desarrollo web.</p>
+                        <a href="https://github.com/CrisDav889/Simulador-de-Compras-en-Linea"><img src="github-sign.png" width="40px"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card project-card glassmorphic h-100">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #6a5acd;">API del clima</h5>
+                        <img src="clima.png" style="width: 380px; border-radius: 15px;">
+                        <p style="color: #e0e0e0;">Utilidad aplicable a cualquier ciudad.</p>
+                        <br><br><br>
+                        <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real"><img src="github-sign.png" width="40px"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card project-card glassmorphic h-100">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #6a5acd;">Calculadora de sistemas de ecuaciones</h5>
+                        <img src="sistemas de ecuaciones.png" style="width: 380px; border-radius: 15px;">
+                        <p style="color: #e0e0e0;">Automatización efectiva.</p>
+                        <br><br>
+                        <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2"><img src="github-sign.png" width="40px"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="container py-5">
+        <h2 class="text-center section-header mb-5">Habilidades</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>JavaScript</span>
+                        <img src="js.png" style="height: 70px ; width:70px ;">
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 0;" data-progress="85"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Dominio de la Inteligencia Artificial/Prompt engineering</span>
+                        <img src="artificial-intelligence_3733750.png" style="height: 70px ; width:70px ;">
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 0;" data-progress="75"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Python</span>
+                        <img src="python.png" style="height: 70px ; width:70px ;">
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 0;" data-progress="70"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>HTML,CSS</span>
+                        <img src="coding.png" style="height: 70px ; width:70px ;">
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 0;" data-progress="65"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="container py-5">
+        <h2 class="text-center section-header mb-5">Contacto</h2>
+        <div class="row">
+            <div class="col-md-6 mx-auto glassmorphic p-4">
+                    <div class="mb-3">
+                        <p>Email: davcris889@gmail.com</p>
+                    </div>
+                    <div class="mb-3">
+                        <p>Instagram: cris_dav47</p>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-3">
+        <p>&copy; 2024 Cristhian Andrés Dávila Morales</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#6a5acd' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#6a5acd', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: 'none', random: false }
+            }
+        });
+
+        // Skill Bar Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                setTimeout(() => {
+                    bar.style.width = `${progress}%`;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
