@@ -170,15 +170,7 @@
             box-shadow: 0 0 10px rgba(0, 120, 212, 0.8); /* Brillo más fuerte */
         }
 
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            opacity: 0.7; /* Opacidad ligeramente reducida para mejor rendimiento */
-        }
+        /* Particles.js (sección eliminada para mejor rendimiento) */
 
         /* Estilos para la sección de contacto */
         #contacto .fluent-card p {
@@ -264,7 +256,7 @@
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
+    <!-- Se ha eliminado el div para Particles.js para mejorar el rendimiento -->
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -454,33 +446,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Se ha eliminado la importación de particles.min.js para mejorar el rendimiento -->
     <script>
-        // Configuración de Particles.js
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } }, /* Reducido para rendimiento */
-                color: { value: '#0078D4' }, /* Color de acento Fluent */
-                shape: { type: 'circle' },
-                opacity: { value: 0.4, random: false }, /* Opacidad reducida para rendimiento */
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#0078D4', opacity: 0.2, width: 1 }, /* Opacidad reducida en líneas */
-                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } } /* Velocidad reducida */
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: { enable: true, mode: 'repulse' },
-                    onclick: { enable: true, mode: 'push' },
-                    resize: true
-                },
-                modes: {
-                    repulse: { distance: 100, duration: 0.4 },
-                    push: { particles_nb: 4 }
-                }
-            },
-            retina_detect: true
-        });
+        // La configuración y el inicializador de Particles.js han sido eliminados para mejorar el rendimiento.
 
         // Animación de barras de habilidad
         document.addEventListener('DOMContentLoaded', function() {
