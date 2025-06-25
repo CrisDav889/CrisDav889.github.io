@@ -3,582 +3,745 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cristhian Dávila - Portafolio Fluent Design</title>
+    <title>Cristhian Dávila - Portafolio Fluent 2</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Fluent Design System Colors (Dark Mode) */
-            --fluent-bg-primary: #1F1F1F; /* Fondo principal muy oscuro */
-            --fluent-bg-secondary: #2C2C2C; /* Fondo para secciones o áreas secundarias */
-            --fluent-bg-tertiary: #3A3A3A; /* Fondo para elementos más elevados (cards) */
-            --fluent-bg-quaternary: #4A4A4A; /* Para elementos más contrastantes o barras de progreso */
-            --fluent-bg-acrylic: rgba(44, 44, 44, 0.85); /* Fondo acrílico más transparente */
-            --fluent-bg-card: rgba(58, 58, 58, 0.85); /* Fondo de tarjeta acrílico más transparente */
-            
-            /* Fluent Accent Colors (Blue, adjusted for dark mode) */
-            --fluent-accent: #00A6ED; /* Azul vibrante, un poco más brillante para destacar en oscuro */
-            --fluent-accent-hover: #007ACC; /* Tono de hover */
-            --fluent-accent-pressed: #00568F; /* Tono de presionado */
-            --fluent-accent-light: rgba(0, 166, 237, 0.15); /* Fondo sutil de acento, con más transparencia */
-            
-            /* Text Colors (for dark mode) */
-            --fluent-text-primary: #FFFFFF; /* Texto principal blanco */
-            --fluent-text-secondary: #D4D4D4; /* Texto secundario gris claro */
-            --fluent-text-tertiary: #AFAFAF; /* Texto más tenue */
-            --fluent-text-inverse: #000000; /* Texto oscuro sobre elementos claros (no tan común en este tema) */
-            
-            /* Border Colors */
-            --fluent-border-primary: rgba(255, 255, 255, 0.15); /* Borde claro y sutil, con más transparencia */
-            --fluent-border-secondary: rgba(255, 255, 255, 0.25); /* Borde un poco más prominente */
-            
-            /* Shadows (more pronounced for relief) */
-            --fluent-shadow-2: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.15); /* Sombra base, mayor opacidad */
-            --fluent-shadow-4: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
-            --fluent-shadow-8: 0 4px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.25); /* Más fuerte para mayor relieve */
-            --fluent-shadow-16: 0 8px 16px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.3); /* Muy fuerte para flotar */
-            
-            /* Corner Radius (Material You inspired, slightly more rounded than strict Fluent) */
-            --fluent-corner-radius-small: 4px;
-            --fluent-corner-radius-medium: 8px;
-            --fluent-corner-radius-large: 16px; /* Más redondeado para Material You */
-            
-            /* Animation */
-            --fluent-duration-faster: 0.1s;
-            --fluent-duration-fast: 0.2s;
-            --fluent-duration-normal: 0.3s;
-            --fluent-duration-slow: 0.5s;
-            --fluent-ease-out: cubic-bezier(0.1, 0.9, 0.2, 1);
+            /* Fluent 2 Semantic Colors - Dark Theme */
+            --neutral-background-1: #1C1C1C;
+            --neutral-background-2: #252525;
+            --neutral-background-3: #2D2D2D;
+            --neutral-background-4: #323232;
+            --neutral-background-5: #3A3A3A;
+            --neutral-background-6: #424242;
+                        
+            --neutral-stroke-1: rgba(255, 255, 255, 0.05);
+            --neutral-stroke-2: rgba(255, 255, 255, 0.08);
+            --neutral-stroke-3: rgba(255, 255, 255, 0.12);
+                        
+            --neutral-foreground-1: #FFFFFF;
+            --neutral-foreground-2: #F5F5F5;
+            --neutral-foreground-3: #E0E0E0;
+            --neutral-foreground-4: #BDBDBD;
+            --neutral-foreground-disabled: #6D6D6D;
+                        
+            /* Brand Colors (Fluent 2 Blue) */
+            --brand-background-1: #0078D4; /* Primary brand color */
+            --brand-background-2: #106EBE; /* Darker for hover/active */
+            --brand-background-3: #005A9F; /* Even darker */
+            --brand-background-tint: rgba(0, 120, 212, 0.1); /* Light transparent tint */
+            --brand-foreground-1: #FFFFFF; /* Text on brand background */
+            --brand-foreground-2: #0078D4; /* Text matching brand color */
+                        
+            /* Fluent 2 Design Tokens */
+            --corner-radius-none: 0px;
+            --corner-radius-small: 4px;
+            --corner-radius-medium: 8px;
+            --corner-radius-large: 12px;
+            --corner-radius-x-large: 16px;
+                        
+            --stroke-width-thin: 1px;
+            --stroke-width-thick: 2px;
+                        
+            --spacing-horizontal-xs: 4px;
+            --spacing-horizontal-s: 8px;
+            --spacing-horizontal-m: 12px;
+            --spacing-horizontal-l: 16px;
+            --spacing-horizontal-xl: 20px;
+            --spacing-horizontal-xxl: 24px;
+            --spacing-horizontal-xxxl: 32px;
+                        
+            --spacing-vertical-xs: 4px;
+            --spacing-vertical-s: 8px;
+            --spacing-vertical-m: 12px;
+            --spacing-vertical-l: 16px;
+            --spacing-vertical-xl: 20px;
+            --spacing-vertical-xxl: 24px;
+            --spacing-vertical-xxxl: 32px;
+                        
+            /* Shadows (Fluent 2 style - subtle and diffused) */
+            --shadow-2: 0 1px 2px rgba(0, 0, 0, 0.14);
+            --shadow-4: 0 2px 4px rgba(0, 0, 0, 0.14);
+            --shadow-8: 0 4px 8px rgba(0, 0, 0, 0.14);
+            --shadow-16: 0 8px 16px rgba(0, 0, 0, 0.14);
+            --shadow-28: 0 14px 28px rgba(0, 0, 0, 0.22);
+                        
+            /* Typography */
+            --font-family-base: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            --font-size-100: 10px;
+            --font-size-200: 12px;
+            --font-size-300: 14px;
+            --font-size-400: 16px;
+            --font-size-500: 20px;
+            --font-size-600: 24px;
+            --font-size-700: 28px;
+            --font-size-800: 32px;
+            --font-size-900: 40px;
+            --font-size-1000: 68px;
+                        
+            --font-weight-regular: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+                        
+            --line-height-100: 14px;
+            --line-height-200: 16px;
+            --line-height-300: 20px;
+            --line-height-400: 22px;
+            --line-height-500: 28px;
+            --line-height-600: 32px;
+            --line-height-700: 36px;
+            --line-height-800: 40px;
+            --line-height-900: 52px;
+            --line-height-1000: 92px;
+                        
+            /* Motion */
+            --curve-accelerate-max: cubic-bezier(0.9, 0.1, 1, 0.2);
+            --curve-accelerate-mid: cubic-bezier(0.7, 0, 1, 0.5);
+            --curve-decelerate-max: cubic-bezier(0.1, 0.9, 0.2, 1);
+            --curve-decelerate-mid: cubic-bezier(0, 0.5, 0.1, 1);
+            --curve-max-easy-ease: cubic-bezier(0.8, 0, 0.1, 1);
+            --curve-easy-ease: cubic-bezier(0.33, 0, 0.67, 1);
+            --curve-linear: cubic-bezier(0, 0, 1, 1);
+                        
+            --duration-ultra-fast: 50ms;
+            --duration-faster: 100ms;
+            --duration-fast: 150ms;
+            --duration-normal: 200ms;
+            --duration-gentle: 250ms;
+            --duration-slow: 300ms;
+            --duration-slower: 400ms;
+            --duration-ultra-slow: 500ms;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, var(--fluent-bg-primary) 0%, var(--fluent-bg-secondary) 100%);
-            color: var(--fluent-text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
+            font-family: var(--font-family-base);
+            font-size: var(--font-size-400);
+            line-height: var(--line-height-400);
+            color: var(--neutral-foreground-1);
+            background: var(--neutral-background-1);
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
+        /* Typography Scale */
+        .text-display {
+            font-size: var(--font-size-1000);
+            line-height: var(--line-height-1000);
+            font-weight: var(--font-weight-semibold);
+        }
+        .text-title-1 {
+            font-size: var(--font-size-900);
+            line-height: var(--line-height-900);
+            font-weight: var(--font-weight-semibold);
+        }
+        .text-title-2 {
+            font-size: var(--font-size-800);
+            line-height: var(--line-height-800);
+            font-weight: var(--font-weight-semibold);
+        }
+        .text-title-3 {
+            font-size: var(--font-size-700);
+            line-height: var(--line-height-700);
+            font-weight: var(--font-weight-semibold);
+        }
+        .text-subtitle-1 {
+            font-size: var(--font-size-500);
+            line-height: var(--line-height-500);
+            font-weight: var(--font-weight-medium);
+        }
+        .text-subtitle-2 {
+            font-size: var(--font-size-400);
+            line-height: var(--line-height-400);
+            font-weight: var(--font-weight-medium);
+        }
+        .text-body-1 {
+            font-size: var(--font-size-400);
+            line-height: var(--line-height-400);
+            font-weight: var(--font-weight-regular);
+        }
+        .text-body-2 {
+            font-size: var(--font-size-300);
+            line-height: var(--line-height-300);
+            font-weight: var(--font-weight-regular);
+        }
+        .text-caption {
+            font-size: var(--font-size-200);
+            line-height: var(--line-height-200);
+            font-weight: var(--font-weight-regular);
+        }
+        /* Layout Containers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-horizontal-xxxl);
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .grid {
+            display: grid;
+            gap: var(--spacing-vertical-xxxl);
+        }
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
         /* Navigation */
-        .navbar {
-            background: var(--fluent-bg-acrylic); /* Mayor transparencia */
-            backdrop-filter: blur(25px); /* Mayor desenfoque */
-            -webkit-backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--fluent-border-secondary); /* Borde más visible */
-            padding: 1rem 0;
-            transition: all var(--fluent-duration-normal) var(--fluent-ease-out);
-            box-shadow: var(--fluent-shadow-4); /* Sombra para elevarlo */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--neutral-background-2); /* Solid background for flat look */
+            /* backdrop-filter: blur(20px); */ /* Removed for flatter aesthetic */
+            /* -webkit-backdrop-filter: blur(20px); */ /* Removed for flatter aesthetic */
+            border-bottom: var(--stroke-width-thin) solid var(--neutral-stroke-2);
+            transition: all var(--duration-normal) var(--curve-decelerate-mid);
+            box-shadow: var(--shadow-2); /* Subtle shadow for elevation */
         }
-
-        .navbar-brand {
-            color: var(--fluent-accent) !important;
-            font-weight: 600;
-            font-size: 1.4rem;
-            letter-spacing: -0.5px;
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-vertical-l) 0;
         }
-
+        .nav-brand {
+            font-size: var(--font-size-600);
+            font-weight: var(--font-weight-semibold);
+            color: var(--brand-foreground-2);
+            text-decoration: none;
+            transition: color var(--duration-fast) var(--curve-decelerate-mid);
+        }
+        .nav-brand:hover {
+            color: var(--brand-background-1);
+        }
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-horizontal-l);
+            list-style: none;
+        }
         .nav-link {
-            color: var(--fluent-text-secondary) !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem !important;
-            border-radius: var(--fluent-corner-radius-medium);
-            transition: all var(--fluent-duration-fast) var(--fluent-ease-out);
+            color: var(--neutral-foreground-2);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
+            border-radius: var(--corner-radius-medium);
+            transition: all var(--duration-fast) var(--curve-decelerate-mid);
             position: relative;
         }
-
         .nav-link:hover {
-            color: var(--fluent-accent) !important;
-            background: var(--fluent-accent-light);
+            color: var(--brand-foreground-2);
+            background: var(--brand-background-tint);
         }
-
-        /* Fluent Cards (background & transparency adjusted) */
-        .fluent-card {
-            background: var(--fluent-bg-card); /* Más transparente */
-            backdrop-filter: blur(30px); /* Mayor desenfoque para relieve */
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--fluent-border-secondary); /* Borde más visible para mayor relieve */
-            border-radius: var(--fluent-corner-radius-large); /* Bordes más redondeados */
-            box-shadow: var(--fluent-shadow-8); /* Sombra más fuerte para mayor relieve */
-            transition: all var(--fluent-duration-normal) var(--fluent-ease-out);
+        .nav-link:active {
+            transform: scale(0.98);
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 60px; /* Offset for fixed nav */
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: var(--spacing-horizontal-xxxl);
+            align-items: center;
+            width: 100%;
+        }
+        .hero-text h1 {
+            color: var(--neutral-foreground-1);
+            margin-bottom: var(--spacing-vertical-l);
+            max-width: 600px;
+        }
+        .hero-subtitle {
+            color: var(--brand-foreground-2);
+            margin-bottom: var(--spacing-vertical-xl);
+        }
+        .hero-description {
+            color: var(--neutral-foreground-3);
+            margin-bottom: var(--spacing-vertical-xxxl);
+            max-width: 500px;
+        }
+        .hero-image {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: var(--stroke-width-thin) solid var(--brand-background-1);
+            box-shadow: var(--shadow-8); /* Adjusted shadow for Fluent 2 */
+            transition: all var(--duration-gentle) var(--curve-decelerate-mid);
+        }
+        .hero-image:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-16); /* Adjusted shadow for Fluent 2 */
+        }
+        /* Buttons */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-horizontal-s);
+            padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
+            border-radius: var(--corner-radius-medium);
+            font-size: var(--font-size-400);
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all var(--duration-fast) var(--curve-decelerate-mid);
             position: relative;
             overflow: hidden;
         }
-
-        .fluent-card::before {
+        .button:focus-visible { /* Use :focus-visible for better accessibility */
+            outline: var(--stroke-width-thick) solid var(--brand-background-1);
+            outline-offset: 2px;
+            border-radius: var(--corner-radius-small);
+        }
+        .button:active {
+            transform: scale(0.98);
+        }
+        .button-primary {
+            background: var(--brand-background-1);
+            color: var(--brand-foreground-1);
+            box-shadow: var(--shadow-2);
+        }
+        .button-primary:hover {
+            background: var(--brand-background-2);
+            box-shadow: var(--shadow-4);
+        }
+        .button-primary:active {
+            background: var(--brand-background-3);
+        }
+        .button-secondary {
+            background: transparent;
+            color: var(--brand-foreground-2);
+            border: var(--stroke-width-thin) solid var(--brand-background-1);
+        }
+        .button-secondary:hover {
+            background: var(--brand-background-tint);
+            border-color: var(--brand-background-2);
+        }
+        .button-secondary:active {
+            background: var(--brand-background-1);
+            color: var(--brand-foreground-1);
+        }
+        .button-group {
+            display: flex;
+            gap: var(--spacing-horizontal-l);
+            flex-wrap: wrap;
+        }
+        /* Cards */
+        .card {
+            background: var(--neutral-background-2);
+            border: var(--stroke-width-thin) solid var(--neutral-stroke-2);
+            border-radius: var(--corner-radius-large);
+            padding: var(--spacing-vertical-xxl);
+            transition: all var(--duration-normal) var(--curve-decelerate-mid);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-2); /* Subtle base shadow for flat */
+        }
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent); /* Más brillante */
+            background: linear-gradient(90deg, transparent, var(--neutral-stroke-3), transparent);
             opacity: 0;
-            transition: opacity var(--fluent-duration-normal) var(--fluent-ease-out);
+            transition: opacity var(--duration-normal) var(--curve-decelerate-mid);
         }
-
-        .fluent-card:hover {
-            transform: translateY(-4px); /* Mayor levantamiento para más relieve */
-            box-shadow: var(--fluent-shadow-16); /* Sombra aún más fuerte en hover */
-            border-color: var(--fluent-accent); /* Borde de acento en hover */
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-4); /* Slightly more pronounced on hover */
+            border-color: var(--neutral-stroke-3);
         }
-
-        .fluent-card:hover::before {
+        .card:hover::before {
             opacity: 1;
         }
-
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
+        .card-elevated { /* For cards that need more prominence */
+            background: var(--neutral-background-3);
+            box-shadow: var(--shadow-4);
         }
-
-        .hero-content {
-            z-index: 2;
-            position: relative;
+        .card-elevated:hover {
+            box-shadow: var(--shadow-8);
         }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            color: var(--fluent-text-primary);
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra de texto sutil */
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--fluent-accent);
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--fluent-text-secondary);
-            line-height: 1.6;
-            max-width: 600px;
-        }
-
-        .hero-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--fluent-accent);
-            box-shadow: var(--fluent-shadow-16); /* Sombra para dar relieve */
-            transition: all var(--fluent-duration-slow) var(--fluent-ease-out);
-        }
-
-        .hero-image:hover {
-            transform: scale(1.08); /* Más grande al pasar el ratón */
-            box-shadow: var(--fluent-shadow-16), 0 0 60px rgba(0, 166, 237, 0.4); /* Brillo más fuerte */
-        }
-
-        /* Section Headers */
-        .section-header {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--fluent-accent); /* Título de sección en color de acento */
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Sombra de texto sutil */
-        }
-
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px; /* Más ancho para el underline */
-            height: 4px; /* Más grueso */
-            background: var(--fluent-accent);
-            border-radius: 2px;
-            box-shadow: 0 0 15px rgba(0, 166, 237, 0.6); /* Brillo para dar relieve */
-        }
-
-        /* Grid Layout Moderno */
-        .projects-grid, .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Min-width ajustado */
-            gap: 2rem; /* Mayor espacio entre elementos */
-            margin-top: 2rem;
-        }
-
-        .project-card, .skill-item {
-            height: 100%;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
+        /* Project Cards */
         .project-image {
             width: 100%;
-            height: 220px; /* Mayor altura para las imágenes */
+            height: 200px;
             object-fit: cover;
-            border-radius: var(--fluent-corner-radius-medium);
-            margin-bottom: 1rem;
-            box-shadow: var(--fluent-shadow-2); /* Sombra sutil para la imagen dentro de la tarjeta */
+            border-radius: var(--corner-radius-medium);
+            margin-bottom: var(--spacing-vertical-l);
         }
-
         .project-title {
-            font-size: 1.4rem; /* Título un poco más grande */
-            font-weight: 600;
-            color: var(--fluent-text-primary);
-            margin-bottom: 0.5rem;
+            color: var(--neutral-foreground-1);
+            margin-bottom: var(--spacing-vertical-s);
         }
-
         .project-description {
-            color: var(--fluent-text-secondary);
-            flex-grow: 1;
-            line-height: 1.5;
+            color: var(--neutral-foreground-3);
+            margin-bottom: var(--spacing-vertical-xl);
         }
-
-        /* Skills Section */
+        /* Skills */
         .skill-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: var(--spacing-vertical-l);
         }
-
         .skill-name {
-            font-size: 1.2rem; /* Nombre de habilidad un poco más grande */
-            font-weight: 500;
-            color: var(--fluent-text-primary);
+            color: var(--neutral-foreground-1);
+            font-weight: var(--font-weight-medium);
         }
-
         .skill-icon {
-            width: 45px; /* Icono un poco más grande */
-            height: 45px;
+            width: 32px;
+            height: 32px;
             object-fit: contain;
         }
-
         .skill-bar {
-            height: 8px; /* Barra de progreso ligeramente más gruesa */
-            background: var(--fluent-bg-quaternary);
-            border-radius: var(--fluent-corner-radius-small);
+            height: 4px;
+            background: var(--neutral-background-5);
+            border-radius: var(--corner-radius-small);
             overflow: hidden;
             position: relative;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); /* Sombra interna para relieve */
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1); /* Subtle inset shadow for depth */
         }
-
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--fluent-accent), var(--fluent-accent-hover));
-            border-radius: var(--fluent-corner-radius-small);
-            transition: width 1.2s var(--fluent-ease-out); /* Animación más suave */
+            background: linear-gradient(90deg, var(--brand-background-1), var(--brand-background-2));
+            border-radius: var(--corner-radius-small);
+            transition: width var(--duration-ultra-slow) var(--curve-decelerate-max);
+            position: relative;
         }
-
-        /* Buttons (updated to fluent-button) */
-        .fluent-button {
-            background: var(--fluent-accent);
-            color: var(--fluent-text-inverse);
-            border: none;
-            padding: 0.8rem 1.8rem; /* Mayor padding */
-            border-radius: var(--fluent-corner-radius-medium);
-            font-weight: 600; /* Texto más audaz */
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem; /* Mayor espacio entre texto e icono */
-            transition: all var(--fluent-duration-fast) var(--fluent-ease-out);
-            cursor: pointer;
-            font-size: 1rem; /* Tamaño de fuente ligeramente mayor */
-            box-shadow: var(--fluent-shadow-4); /* Sombra para dar relieve al botón */
+        .skill-progress::after { /* Shimmer effect for progress bar */
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 40px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+            animation: shimmer 2s infinite;
         }
-
-        .fluent-button:hover {
-            background: var(--fluent-accent-hover);
-            color: var(--fluent-text-inverse);
-            transform: translateY(-2px); /* Pequeño levantamiento */
-            box-shadow: var(--fluent-shadow-8); /* Mayor sombra en hover */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
-
-        .fluent-button:active {
-            background: var(--fluent-accent-pressed);
-            transform: translateY(0);
-            box-shadow: var(--fluent-shadow-2); /* Sombra hundida en active */
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
-
-        .fluent-button-secondary {
-            background: transparent;
-            color: var(--fluent-accent);
-            border: 1px solid var(--fluent-accent);
-            box-shadow: none; /* Sin sombra por defecto para secundario */
+        .section-title {
+            color: var(--neutral-foreground-1);
+            margin-bottom: var(--spacing-vertical-l);
+            position: relative;
         }
-
-        .fluent-button-secondary:hover {
-            background: var(--fluent-accent-light);
-            color: var(--fluent-accent);
-            box-shadow: var(--fluent-shadow-2); /* Sombra sutil en hover */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--brand-background-1);
+            border-radius: var(--corner-radius-small);
         }
-        .fluent-button-secondary:active {
-            background: var(--fluent-accent);
-            color: var(--fluent-text-inverse);
-        }
-
-        /* Contact Section */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem; /* Mayor espacio entre items de contacto */
-        }
-
+        /* Contact */
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            padding: 1.2rem; /* Mayor padding */
-            background: var(--fluent-bg-tertiary); /* Fondo más oscuro */
-            border-radius: var(--fluent-corner-radius-medium);
-            border: 1px solid var(--fluent-border-secondary); /* Borde más visible */
-            box-shadow: var(--fluent-shadow-2); /* Sombra para cada item */
-            transition: all var(--fluent-duration-fast) var(--fluent-ease-out);
+            gap: var(--spacing-horizontal-l);
+            padding: var(--spacing-vertical-l);
+            background: var(--neutral-background-3);
+            border: var(--stroke-width-thin) solid var(--neutral-stroke-2);
+            border-radius: var(--corner-radius-medium);
+            margin-bottom: var(--spacing-vertical-l);
+            transition: all var(--duration-fast) var(--curve-decelerate-mid);
+            box-shadow: var(--shadow-2); /* Subtle shadow */
         }
-
         .contact-item:hover {
-            background: rgba(0, 166, 237, 0.1); /* Fondo de acento sutil en hover */
-            border-color: var(--fluent-accent);
-            box-shadow: var(--fluent-shadow-4); /* Mayor sombra en hover */
+            background: var(--neutral-background-4);
+            border-color: var(--brand-background-1);
+            box-shadow: var(--shadow-4); /* Slightly more pronounced on hover */
         }
-
         .contact-label {
-            font-weight: 500;
-            color: var(--fluent-text-primary);
-            min-width: 90px; /* Mayor ancho para etiquetas */
-            font-size: 1.05rem;
+            font-weight: var(--font-weight-medium);
+            color: var(--neutral-foreground-2);
+            min-width: 100px;
         }
-
         .contact-value a {
-            color: var(--fluent-accent);
+            color: var(--brand-foreground-2);
             text-decoration: none;
-            transition: color var(--fluent-duration-fast) var(--fluent-ease-out);
-            font-weight: 400;
+            transition: color var(--duration-fast) var(--curve-decelerate-mid);
         }
-
         .contact-value a:hover {
-            color: var(--fluent-accent-hover);
+            color: var(--brand-background-1);
             text-decoration: underline;
         }
-
         /* Footer */
-        footer {
-            background: var(--fluent-bg-acrylic);
-            backdrop-filter: blur(25px); /* Mayor desenfoque */
-            -webkit-backdrop-filter: blur(25px);
-            border-top: 1px solid var(--fluent-border-secondary);
-            padding: 2.5rem 0; /* Mayor padding */
-            margin-top: 6rem; /* Más espacio */
+        .footer {
+            background: var(--neutral-background-2);
+            border-top: var(--stroke-width-thin) solid var(--neutral-stroke-2);
+            padding: var(--spacing-vertical-xxxl) 0;
             text-align: center;
-            color: var(--fluent-text-secondary);
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4); /* Sombra inferior */
+            color: var(--neutral-foreground-4);
+            margin-top: 80px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Shadow from bottom */
         }
-
         /* Animations */
-        .fade-in-up {
+        .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s var(--fluent-ease-out) forwards;
+            transform: translateY(20px);
+            animation: fadeIn var(--duration-slow) var(--curve-decelerate-mid) forwards;
         }
-
-        @keyframes fadeInUp {
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+        @keyframes fadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        /* Scroll Animations (refined) */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px); /* Más desplazamiento inicial */
-            transition: all 0.8s var(--fluent-ease-out); /* Transición más larga y suave */
+            transform: translateY(30px);
+            transition: all var(--duration-slow) var(--curve-decelerate-mid);
         }
-
-        .animate-on-scroll.animated {
+        .animate-on-scroll.visible { /* Changed from .animated to .visible */
             opacity: 1;
             transform: translateY(0);
         }
-
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: clamp(2rem, 6vw, 3.5rem);
-            }
-            .hero-section .col-lg-4 {
-                order: -1; /* Mueve la imagen arriba en pantallas pequeñas */
-                margin-bottom: 2rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            .hero-section {
+            .container {
+                padding: 0 var(--spacing-horizontal-l);
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
                 text-align: center;
-                min-height: unset; /* Permite que el contenido determine la altura */
-                padding-top: 6rem;
-                padding-bottom: 3rem;
+                gap: var(--spacing-vertical-xxxl);
             }
-            
-            .hero-title {
-                font-size: clamp(2rem, 8vw, 3rem);
+            .hero-text {
+                order: 2;
             }
-            
-            .section-header {
-                font-size: 2rem;
+            .hero-image-container { /* Added container to center image better */
+                order: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
-            
-            .projects-grid, .skills-container {
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .text-display {
+                font-size: var(--font-size-800);
+                line-height: var(--line-height-800);
+            }
+            .text-title-1 {
+                font-size: var(--font-size-700);
+                line-height: var(--line-height-700);
+            }
+            .button-group {
+                justify-content: center;
+            }
+            .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
             }
-            
-            .project-image {
-                height: 180px; /* Ajuste para móviles */
+        }
+        /* Mobile Navigation */
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--neutral-foreground-1);
+            font-size: var(--font-size-600);
+            cursor: pointer;
+            padding: var(--spacing-vertical-s);
+        }
+        @media (max-width: 768px) {
+            .nav-mobile-toggle {
+                display: block;
             }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--neutral-background-2);
+                border-top: var(--stroke-width-thin) solid var(--neutral-stroke-2);
+                flex-direction: column;
+                padding: var(--spacing-vertical-l);
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all var(--duration-normal) var(--curve-decelerate-mid);
+            }
+            .nav-links.active {
+                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        /* Focus styles */
+        :focus-visible {
+            outline: 2px solid var(--brand-background-1);
+            outline-offset: 2px;
+            border-radius: var(--corner-radius-small);
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="nav">
         <div class="container">
-            <a class="navbar-brand" href="#inicio">Cristhian Dávila</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#certificaciones">Certificaciones</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+            <div class="nav-content">
+                <a href="#inicio" class="nav-brand">Cristhian Dávila</a>
+                <button class="nav-mobile-toggle" onclick="toggleMobileNav()">☰</button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                    <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+                    <li><a href="#certificaciones" class="nav-link">Certificaciones</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <!-- Hero Section -->
-    <section id="inicio" class="hero-section">
+    <section id="inicio" class="hero">
         <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-8 hero-content">
-                    <div class="fade-in-up">
-                        <h1 class="hero-title">Hola, soy Cristhian Dávila</h1>
-                        <p class="hero-subtitle">Desarrollador Proactivo</p>
-                        <p class="hero-description">
-                            Joven apasionado con dominio de tecnologías como HTML, CSS, JavaScript y Python.
-                            Experiencia en el desarrollo de soluciones web y la implementación de automatizaciones.
-                            Siempre buscando aprender y aplicar nuevas tecnologías para crear experiencias digitales innovadoras.
-                        </p>
-                        <div class="mt-4">
-                            <a href="#proyectos" class="fluent-button me-3">Ver Proyectos</a>
-                            <a href="#contacto" class="fluent-button fluent-button-secondary">Contactar</a>
-                        </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="text-display fade-in">Hola, soy Cristhian Dávila</h1>
+                    <p class="text-subtitle-1 hero-subtitle fade-in fade-in-delay-1">Desarrollador Proactivo</p>
+                    <p class="text-body-1 hero-description fade-in fade-in-delay-2">
+                        Joven apasionado con dominio de tecnologías como HTML, CSS, JavaScript y Python.
+                        Experiencia en el desarrollo de soluciones web y la implementación de automatizaciones.
+                        Siempre buscando aprender y aplicar nuevas tecnologías para crear experiencias digitales innovadoras.
+                    </p>
+                    <div class="button-group fade-in fade-in-delay-3">
+                        <a href="#proyectos" class="button button-primary">Ver Proyectos</a>
+                        <a href="#contacto" class="button button-secondary">Contactar</a>
                     </div>
                 </div>
-                <div class="col-lg-4 text-center">
-                    <div class="fade-in-up" style="animation-delay: 0.2s;">
-                        <img src="i'm.jpg" alt="Cristhian Dávila" class="hero-image">
-                    </div>
+                <div class="hero-image-container">
+                    <img src="i'm.jpg" alt="Cristhian Dávila" class="hero-image fade-in fade-in-delay-2">
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Projects Section -->
-    <section id="proyectos" class="py-5">
+    <section id="proyectos" class="section">
         <div class="container">
-            <h2 class="section-header animate-on-scroll">Proyectos</h2>
-            <div class="projects-grid">
-                <div class="fluent-card project-card animate-on-scroll">
+            <div class="section-header">
+                <h2 class="text-title-2 section-title animate-on-scroll">Proyectos</h2>
+            </div>
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
                     <img src="shop_sim.png" alt="Lista de Tareas Web" class="project-image">
-                    <h3 class="project-title">Lista de tareas Web</h3>
-                    <p class="project-description">
+                    <h3 class="text-subtitle-1 project-title">Lista de tareas Web</h3>
+                    <p class="text-body-1 project-description">
                         Aplicación web interactiva para gestionar tus tareas diarias, con funcionalidades de añadir, editar y eliminar.
                     </p>
-                    <a href="https://github.com/CrisDav889/to-do-list" target="_blank" class="fluent-button">
-                        <img src="github-sign.png" width="20" alt="GitHub"> Ver en GitHub
+                    <a href="https://github.com/CrisDav889/to-do-list" target="_blank" class="button button-primary">
+                        <img src="github-sign.png" width="16" alt="GitHub"> Ver en GitHub
                     </a>
                 </div>
-                
-                <div class="fluent-card project-card animate-on-scroll">
+                                
+                <div class="card animate-on-scroll">
                     <img src="clima.png" alt="API del clima" class="project-image">
-                    <h3 class="project-title">API del clima</h3>
-                    <p class="project-description">
+                    <h3 class="text-subtitle-1 project-title">API del clima</h3>
+                    <p class="text-body-1 project-description">
                         Una interfaz sencilla para consultar el clima en tiempo real de cualquier ciudad del mundo, utilizando APIs públicas.
                     </p>
-                    <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real" target="_blank" class="fluent-button">
-                        <img src="github-sign.png" width="20" alt="GitHub"> Ver en GitHub
+                    <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real" target="_blank" class="button button-primary">
+                        <img src="github-sign.png" width="16" alt="GitHub"> Ver en GitHub
                     </a>
                 </div>
-                
-                <div class="fluent-card project-card animate-on-scroll">
+                                
+                <div class="card animate-on-scroll">
                     <img src="sistemas de ecuaciones.png" alt="Calculadora de Ecuaciones" class="project-image">
-                    <h3 class="project-title">Calculadora de sistemas de ecuaciones</h3>
-                    <p class="project-description">
+                    <h3 class="text-subtitle-1 project-title">Calculadora de sistemas de ecuaciones</h3>
+                    <p class="text-body-1 project-description">
                         Herramienta programada en Python para resolver sistemas de ecuaciones lineales 2x2, ideal para estudiantes y análisis rápido.
                     </p>
-                    <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2" target="_blank" class="fluent-button">
-                        <img src="github-sign.png" width="20" alt="GitHub"> Ver en GitHub
+                    <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2" target="_blank" class="button button-primary">
+                        <img src="github-sign.png" width="16" alt="GitHub"> Ver en GitHub
                     </a>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Skills Section -->
-    <section id="habilidades" class="py-5">
+    <section id="habilidades" class="section">
         <div class="container">
-            <h2 class="section-header animate-on-scroll">Habilidades</h2>
-            <div class="skills-container">
-                <div class="fluent-card skill-item animate-on-scroll">
+            <div class="section-header">
+                <h2 class="text-title-2 section-title animate-on-scroll">Habilidades</h2>
+            </div>
+            <div class="grid grid-2">
+                <div class="card animate-on-scroll">
                     <div class="skill-header">
-                        <span class="skill-name">JavaScript</span>
+                        <span class="text-subtitle-2 skill-name">JavaScript</span>
                         <img src="js.png" alt="JavaScript" class="skill-icon">
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" data-progress="85"></div>
                     </div>
                 </div>
-                
-                <div class="fluent-card skill-item animate-on-scroll">
+                                
+                <div class="card animate-on-scroll">
                     <div class="skill-header">
-                        <span class="skill-name">Inteligencia Artificial / Prompt Engineering</span>
+                        <span class="text-subtitle-2 skill-name">Inteligencia Artificial / Prompt Engineering</span>
                         <img src="artificial-intelligence_3733750.png" alt="AI" class="skill-icon">
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" data-progress="75"></div>
                     </div>
                 </div>
-                
-                <div class="fluent-card skill-item animate-on-scroll">
+                                
+                <div class="card animate-on-scroll">
                     <div class="skill-header">
-                        <span class="skill-name">Python</span>
+                        <span class="text-subtitle-2 skill-name">Python</span>
                         <img src="python.png" alt="Python" class="skill-icon">
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" data-progress="70"></div>
                     </div>
                 </div>
-                
-                <div class="fluent-card skill-item animate-on-scroll">
+                                
+                <div class="card animate-on-scroll">
                     <div class="skill-header">
-                        <span class="skill-name">HTML, CSS</span>
+                        <span class="text-subtitle-2 skill-name">HTML, CSS</span>
                         <img src="coding.png" alt="HTML CSS" class="skill-icon">
                     </div>
                     <div class="skill-bar">
@@ -588,104 +751,114 @@
             </div>
         </div>
     </section>
-
     <!-- Certifications Section -->
-    <section id="certificaciones" class="py-5">
+    <section id="certificaciones" class="section">
         <div class="container">
-            <h2 class="section-header animate-on-scroll">Certificaciones</h2>
-            <div class="projects-grid">
-                <div class="fluent-card project-card animate-on-scroll">
+            <div class="section-header">
+                <h2 class="text-title-2 section-title animate-on-scroll">Certificaciones</h2>
+            </div>
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
                     <img src="Certificado 1.png" alt="Certificado de Competencias Digitales" class="project-image">
-                    <h3 class="project-title">Competencias digitales para profesionales</h3>
-                    <p class="project-description">
+                    <h3 class="text-subtitle-1 project-title">Competencias digitales para profesionales</h3>
+                    <p class="text-body-1 project-description">
                         <strong>Emitido por:</strong> Google Skillshop<br>
                         <strong>Fecha:</strong> Diciembre, 2024
                     </p>
-                    <a href="https://skillshop.exceedlms.com/student/award/dyFtXiXAPHiqx3QHLchWhmXg" target="_blank" class="fluent-button">
+                    <a href="https://skillshop.exceedlms.com/student/award/dyFtXiXAPHiqx3QHLchWhmXg" target="_blank" class="button button-primary">
                         Ver Credencial
                     </a>
                 </div>
-                
-                <div class="fluent-card project-card animate-on-scroll">
+                                
+                <div class="card animate-on-scroll">
                     <img src="Certificado 2.png" alt="Certificado de Desarrollo Web HTML/CSS" class="project-image">
-                    <h3 class="project-title">Introducción al desarrollo web HTML/CSS 2/2</h3>
-                    <p class="project-description">
+                    <h3 class="text-subtitle-1 project-title">Introducción al desarrollo web HTML/CSS 2/2</h3>
+                    <p class="text-body-1 project-description">
                         <strong>Emitido por:</strong> Google Skillshop<br>
                         <strong>Fecha:</strong> Diciembre, 2024
                     </p>
-                    <a href="https://skillshop.exceedlms.com/student/award/7XDESQDfAPLGj3uWpp26sFZs" target="_blank" class="fluent-button">
+                    <a href="https://skillshop.exceedlms.com/student/award/7XDESQDfAPLGj3uWpp26sFZs" target="_blank" class="button button-primary">
                         Ver Credencial
                     </a>
                 </div>
-                
-                <div class="fluent-card project-card animate-on-scroll">
+                                
+                <div class="card animate-on-scroll">
                     <img src="Certificado 3.png" alt="Certificado de Python para Ciencia de Datos" class="project-image">
-                    <h3 class="project-title">Python 101 for data science</h3>
-                    <p class="project-description">
+                    <h3 class="text-subtitle-1 project-title">Python 101 for data science</h3>
+                    <p class="text-body-1 project-description">
                         <strong>Emitido por:</strong> Cognitive Class by IBM<br>
                         <strong>Fecha:</strong> Diciembre, 2024
                     </p>
-                    <a href="https://courses.cognitiveclass.ai/certificates/542e80f5531744f9be80d3d3407cae8e" target="_blank" class="fluent-button">
+                    <a href="https://courses.cognitiveclass.ai/certificates/542e80f5531744f9be80d3d3407cae8e" target="_blank" class="button button-primary">
                         Ver Credencial
                     </a>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
-    <section id="contacto" class="py-5">
+    <section id="contacto" class="section">
         <div class="container">
-            <h2 class="section-header animate-on-scroll">Contacto</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="fluent-card animate-on-scroll" style="padding: 2rem;">
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-label">Email:</div>
-                                <div class="contact-value">
-                                    <a href="mailto:davcris889@gmail.com">davcris889@gmail.com</a>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-label">Instagram:</div>
-                                <div class="contact-value">
-                                    <a href="https://www.instagram.com/cris_dav47" target="_blank">cris_dav47</a>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-label">LinkedIn:</div>
-                                <div class="contact-value">
-                                    <a href="https://www.linkedin.com/in/cristhian-davila/" target="_blank">Cristhian Dávila</a>
-                                </div>
-                            </div>
+            <div class="section-header">
+                <h2 class="text-title-2 section-title animate-on-scroll">Contacto</h2>
+            </div>
+            <div class="grid">
+                <div class="card card-elevated animate-on-scroll" style="padding: var(--spacing-vertical-xxl);">
+                    <div class="contact-item">
+                        <div class="contact-label text-body-1">Email:</div>
+                        <div class="contact-value text-body-1">
+                            <a href="mailto:davcris889@gmail.com">davcris889@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label text-body-1">Instagram:</div>
+                        <div class="contact-value text-body-1">
+                            <a href="https://www.instagram.com/cris_dav47" target="_blank">cris_dav47</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label text-body-1">LinkedIn:</div>
+                        <div class="contact-value text-body-1">
+                            <a href="https://www.linkedin.com/in/cristhian-davila/" target="_blank">Cristhian Dávila</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Cristhian Andrés Dávila Morales. Todos los derechos reservados.</p>
+            <p class="text-body-2">&copy; 2024 Cristhian Andrés Dávila Morales. Todos los derechos reservados.</p>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile navigation toggle
+            window.toggleMobileNav = function() {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.toggle('active');
+            };
+
             // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('.nav').offsetHeight;
+                        const offsetTop = targetElement.offsetTop - navbarHeight;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
                         });
+                        // Close mobile nav after clicking a link
+                        const navLinks = document.getElementById('navLinks');
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                        }
                     }
                 });
             });
@@ -699,7 +872,7 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
+                        entry.target.classList.add('visible'); /* Changed to 'visible' */
                         observer.unobserve(entry.target);
                     }
                 });
@@ -717,25 +890,48 @@
                     if (entry.isIntersecting) {
                         const bar = entry.target;
                         const progress = bar.getAttribute('data-progress');
-                        setTimeout(() => {
-                            bar.style.width = `${progress}%`;
-                        }, 300);
-                        skillObserver.unobserve(bar);
+                        // Ensure animation only runs once per load/visibility
+                        if (bar.style.width === '' || bar.style.width === '0%') {
+                           setTimeout(() => {
+                               bar.style.width = `${progress}%`;
+                           }, 300);
+                        }
+                        skillObserver.unobserve(bar); // Stop observing after animation
                     }
                 });
             }, { threshold: 0.5 });
 
             skillBars.forEach(bar => {
-                skillObserver.observe(bar);
+                observer.observe(bar); // Use main observer for visibility, then trigger
             });
+            // Re-observe skill bars when their container becomes visible to trigger progress animation
+            const skillSection = document.getElementById('habilidades');
+            if (skillSection) {
+                new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            skillBars.forEach(bar => {
+                                const progress = bar.getAttribute('data-progress');
+                                bar.style.width = `${progress}%`;
+                            });
+                        } else {
+                             // Reset skill bars when out of view (optional, for re-animation on scroll up/down)
+                             skillBars.forEach(bar => {
+                                 bar.style.width = '0%';
+                             });
+                        }
+                    });
+                }, { threshold: 0.2 }).observe(skillSection);
+            }
 
-            // Navbar background on scroll (adjusted for dark mode)
+
+            // Navbar background on scroll
             window.addEventListener('scroll', () => {
-                const navbar = document.querySelector('.navbar');
-                if (window.scrollY > 50) {
-                    navbar.style.background = 'rgba(44, 44, 44, 0.95)'; /* Más opaco al hacer scroll */
+                const navbar = document.querySelector('.nav');
+                if (window.scrollY > 0) { /* Check if scrolled at all */
+                    navbar.style.background = 'rgba(28, 28, 28, 0.95)'; /* Slightly more opaque on scroll */
                 } else {
-                    navbar.style.background = 'var(--fluent-bg-acrylic)'; /* Más transparente al inicio */
+                    navbar.style.background = 'rgba(28, 28, 28, 0.9)'; /* Initial transparency */
                 }
             });
         });
