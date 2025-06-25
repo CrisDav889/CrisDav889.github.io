@@ -9,40 +9,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Fluent Design System Colors - Dark Mode */
-            --fluent-bg-primary: #1f1f1f;
-            --fluent-bg-secondary: #2d2d30;
-            --fluent-bg-tertiary: #3c3c3c;
-            --fluent-bg-quaternary: #252526;
-            --fluent-bg-acrylic: rgba(31, 31, 31, 0.8);
-            --fluent-bg-card: rgba(60, 60, 60, 0.8);
+            /* Fluent Design System Colors (Dark Mode) */
+            --fluent-bg-primary: #1F1F1F; /* Fondo principal muy oscuro */
+            --fluent-bg-secondary: #2C2C2C; /* Fondo para secciones o áreas secundarias */
+            --fluent-bg-tertiary: #3A3A3A; /* Fondo para elementos más elevados (cards) */
+            --fluent-bg-quaternary: #4A4A4A; /* Para elementos más contrastantes o barras de progreso */
+            --fluent-bg-acrylic: rgba(44, 44, 44, 0.85); /* Fondo acrílico más transparente */
+            --fluent-bg-card: rgba(58, 58, 58, 0.85); /* Fondo de tarjeta acrílico más transparente */
             
-            /* Fluent Colors */
-            --fluent-accent: #0078d4;
-            --fluent-accent-hover: #106ebe;
-            --fluent-accent-pressed: #005a9e;
-            --fluent-accent-light: rgba(0, 120, 212, 0.2);
+            /* Fluent Accent Colors (Blue, adjusted for dark mode) */
+            --fluent-accent: #00A6ED; /* Azul vibrante, un poco más brillante para destacar en oscuro */
+            --fluent-accent-hover: #007ACC; /* Tono de hover */
+            --fluent-accent-pressed: #00568F; /* Tono de presionado */
+            --fluent-accent-light: rgba(0, 166, 237, 0.15); /* Fondo sutil de acento, con más transparencia */
             
-            /* Text Colors - Dark Mode */
-            --fluent-text-primary: #ffffff;
-            --fluent-text-secondary: #cccccc;
-            --fluent-text-tertiary: #9d9d9d;
-            --fluent-text-inverse: #ffffff;
+            /* Text Colors (for dark mode) */
+            --fluent-text-primary: #FFFFFF; /* Texto principal blanco */
+            --fluent-text-secondary: #D4D4D4; /* Texto secundario gris claro */
+            --fluent-text-tertiary: #AFAFAF; /* Texto más tenue */
+            --fluent-text-inverse: #000000; /* Texto oscuro sobre elementos claros (no tan común en este tema) */
             
-            /* Border Colors - Dark Mode */
-            --fluent-border-primary: #464647;
-            --fluent-border-secondary: #6f6f6f;
+            /* Border Colors */
+            --fluent-border-primary: rgba(255, 255, 255, 0.15); /* Borde claro y sutil, con más transparencia */
+            --fluent-border-secondary: rgba(255, 255, 255, 0.25); /* Borde un poco más prominente */
             
-            /* Shadows - Enhanced for dark mode */
-            --fluent-shadow-2: 0 0.5px 1px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);
-            --fluent-shadow-4: 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
-            --fluent-shadow-8: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2);
-            --fluent-shadow-16: 0 4px 8px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3);
+            /* Shadows (more pronounced for relief) */
+            --fluent-shadow-2: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.15); /* Sombra base, mayor opacidad */
+            --fluent-shadow-4: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+            --fluent-shadow-8: 0 4px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.25); /* Más fuerte para mayor relieve */
+            --fluent-shadow-16: 0 8px 16px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.3); /* Muy fuerte para flotar */
             
-            /* Corner Radius */
-            --fluent-corner-radius-small: 2px;
-            --fluent-corner-radius-medium: 4px;
-            --fluent-corner-radius-large: 8px;
+            /* Corner Radius (Material You inspired, slightly more rounded than strict Fluent) */
+            --fluent-corner-radius-small: 4px;
+            --fluent-corner-radius-medium: 8px;
+            --fluent-corner-radius-large: 16px; /* Más redondeado para Material You */
             
             /* Animation */
             --fluent-duration-faster: 0.1s;
@@ -69,12 +69,13 @@
 
         /* Navigation */
         .navbar {
-            background: var(--fluent-bg-acrylic);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--fluent-border-primary);
+            background: var(--fluent-bg-acrylic); /* Mayor transparencia */
+            backdrop-filter: blur(25px); /* Mayor desenfoque */
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--fluent-border-secondary); /* Borde más visible */
             padding: 1rem 0;
             transition: all var(--fluent-duration-normal) var(--fluent-ease-out);
+            box-shadow: var(--fluent-shadow-4); /* Sombra para elevarlo */
         }
 
         .navbar-brand {
@@ -98,28 +99,14 @@
             background: var(--fluent-accent-light);
         }
 
-        /* Bootstrap navbar toggler for dark mode */
-        .navbar-toggler {
-            border: 1px solid var(--fluent-border-primary);
-            padding: 0.25rem 0.5rem;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.2rem rgba(0, 120, 212, 0.25);
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        /* Fluent Cards */
+        /* Fluent Cards (background & transparency adjusted) */
         .fluent-card {
-            background: var(--fluent-bg-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--fluent-border-primary);
-            border-radius: var(--fluent-corner-radius-large);
-            box-shadow: var(--fluent-shadow-4);
+            background: var(--fluent-bg-card); /* Más transparente */
+            backdrop-filter: blur(30px); /* Mayor desenfoque para relieve */
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--fluent-border-secondary); /* Borde más visible para mayor relieve */
+            border-radius: var(--fluent-corner-radius-large); /* Bordes más redondeados */
+            box-shadow: var(--fluent-shadow-8); /* Sombra más fuerte para mayor relieve */
             transition: all var(--fluent-duration-normal) var(--fluent-ease-out);
             position: relative;
             overflow: hidden;
@@ -132,16 +119,15 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent); /* Más brillante */
             opacity: 0;
             transition: opacity var(--fluent-duration-normal) var(--fluent-ease-out);
         }
 
         .fluent-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--fluent-shadow-16);
-            border-color: var(--fluent-accent-light);
-            background: rgba(60, 60, 60, 0.9);
+            transform: translateY(-4px); /* Mayor levantamiento para más relieve */
+            box-shadow: var(--fluent-shadow-16); /* Sombra aún más fuerte en hover */
+            border-color: var(--fluent-accent); /* Borde de acento en hover */
         }
 
         .fluent-card:hover::before {
@@ -169,6 +155,7 @@
             margin-bottom: 1rem;
             line-height: 1.1;
             letter-spacing: -1px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra de texto sutil */
         }
 
         .hero-subtitle {
@@ -191,23 +178,24 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--fluent-accent);
-            box-shadow: var(--fluent-shadow-16);
+            box-shadow: var(--fluent-shadow-16); /* Sombra para dar relieve */
             transition: all var(--fluent-duration-slow) var(--fluent-ease-out);
         }
 
         .hero-image:hover {
-            transform: scale(1.05);
-            box-shadow: var(--fluent-shadow-16), 0 0 40px rgba(0, 120, 212, 0.4);
+            transform: scale(1.08); /* Más grande al pasar el ratón */
+            box-shadow: var(--fluent-shadow-16), 0 0 60px rgba(0, 166, 237, 0.4); /* Brillo más fuerte */
         }
 
         /* Section Headers */
         .section-header {
             font-size: 2.5rem;
             font-weight: 600;
-            color: var(--fluent-text-primary);
+            color: var(--fluent-accent); /* Título de sección en color de acento */
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Sombra de texto sutil */
         }
 
         .section-header::after {
@@ -216,21 +204,22 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+            width: 80px; /* Más ancho para el underline */
+            height: 4px; /* Más grueso */
             background: var(--fluent-accent);
             border-radius: 2px;
+            box-shadow: 0 0 15px rgba(0, 166, 237, 0.6); /* Brillo para dar relieve */
         }
 
         /* Grid Layout Moderno */
-        .projects-grid {
+        .projects-grid, .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Min-width ajustado */
+            gap: 2rem; /* Mayor espacio entre elementos */
             margin-top: 2rem;
         }
 
-        .project-card {
+        .project-card, .skill-item {
             height: 100%;
             padding: 2rem;
             display: flex;
@@ -240,15 +229,15 @@
 
         .project-image {
             width: 100%;
-            height: 200px;
+            height: 220px; /* Mayor altura para las imágenes */
             object-fit: cover;
             border-radius: var(--fluent-corner-radius-medium);
             margin-bottom: 1rem;
-            border: 1px solid var(--fluent-border-primary);
+            box-shadow: var(--fluent-shadow-2); /* Sombra sutil para la imagen dentro de la tarjeta */
         }
 
         .project-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem; /* Título un poco más grande */
             font-weight: 600;
             color: var(--fluent-text-primary);
             margin-bottom: 0.5rem;
@@ -261,20 +250,6 @@
         }
 
         /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-item {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
         .skill-header {
             display: flex;
             justify-content: space-between;
@@ -282,122 +257,136 @@
         }
 
         .skill-name {
-            font-size: 1.1rem;
+            font-size: 1.2rem; /* Nombre de habilidad un poco más grande */
             font-weight: 500;
             color: var(--fluent-text-primary);
         }
 
         .skill-icon {
-            width: 40px;
-            height: 40px;
+            width: 45px; /* Icono un poco más grande */
+            height: 45px;
             object-fit: contain;
-            filter: brightness(1.2);
         }
 
         .skill-bar {
-            height: 6px;
+            height: 8px; /* Barra de progreso ligeramente más gruesa */
             background: var(--fluent-bg-quaternary);
             border-radius: var(--fluent-corner-radius-small);
             overflow: hidden;
             position: relative;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); /* Sombra interna para relieve */
         }
 
         .skill-progress {
             height: 100%;
             background: linear-gradient(90deg, var(--fluent-accent), var(--fluent-accent-hover));
             border-radius: var(--fluent-corner-radius-small);
-            transition: width 1s var(--fluent-ease-out);
+            transition: width 1.2s var(--fluent-ease-out); /* Animación más suave */
         }
 
-        /* Buttons */
+        /* Buttons (updated to fluent-button) */
         .fluent-button {
             background: var(--fluent-accent);
             color: var(--fluent-text-inverse);
             border: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 1.8rem; /* Mayor padding */
             border-radius: var(--fluent-corner-radius-medium);
-            font-weight: 500;
+            font-weight: 600; /* Texto más audaz */
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem; /* Mayor espacio entre texto e icono */
             transition: all var(--fluent-duration-fast) var(--fluent-ease-out);
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1rem; /* Tamaño de fuente ligeramente mayor */
+            box-shadow: var(--fluent-shadow-4); /* Sombra para dar relieve al botón */
         }
 
         .fluent-button:hover {
             background: var(--fluent-accent-hover);
             color: var(--fluent-text-inverse);
-            transform: translateY(-1px);
-            box-shadow: var(--fluent-shadow-8);
+            transform: translateY(-2px); /* Pequeño levantamiento */
+            box-shadow: var(--fluent-shadow-8); /* Mayor sombra en hover */
         }
 
         .fluent-button:active {
             background: var(--fluent-accent-pressed);
             transform: translateY(0);
+            box-shadow: var(--fluent-shadow-2); /* Sombra hundida en active */
         }
 
         .fluent-button-secondary {
             background: transparent;
             color: var(--fluent-accent);
             border: 1px solid var(--fluent-accent);
+            box-shadow: none; /* Sin sombra por defecto para secundario */
         }
 
         .fluent-button-secondary:hover {
             background: var(--fluent-accent-light);
             color: var(--fluent-accent);
+            box-shadow: var(--fluent-shadow-2); /* Sombra sutil en hover */
+        }
+        .fluent-button-secondary:active {
+            background: var(--fluent-accent);
+            color: var(--fluent-text-inverse);
         }
 
         /* Contact Section */
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem; /* Mayor espacio entre items de contacto */
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--fluent-bg-tertiary);
+            gap: 1.5rem;
+            padding: 1.2rem; /* Mayor padding */
+            background: var(--fluent-bg-tertiary); /* Fondo más oscuro */
             border-radius: var(--fluent-corner-radius-medium);
-            border: 1px solid var(--fluent-border-primary);
+            border: 1px solid var(--fluent-border-secondary); /* Borde más visible */
+            box-shadow: var(--fluent-shadow-2); /* Sombra para cada item */
             transition: all var(--fluent-duration-fast) var(--fluent-ease-out);
         }
 
         .contact-item:hover {
-            background: var(--fluent-accent-light);
+            background: rgba(0, 166, 237, 0.1); /* Fondo de acento sutil en hover */
             border-color: var(--fluent-accent);
+            box-shadow: var(--fluent-shadow-4); /* Mayor sombra en hover */
         }
 
         .contact-label {
             font-weight: 500;
             color: var(--fluent-text-primary);
-            min-width: 80px;
+            min-width: 90px; /* Mayor ancho para etiquetas */
+            font-size: 1.05rem;
         }
 
         .contact-value a {
             color: var(--fluent-accent);
             text-decoration: none;
             transition: color var(--fluent-duration-fast) var(--fluent-ease-out);
+            font-weight: 400;
         }
 
         .contact-value a:hover {
             color: var(--fluent-accent-hover);
+            text-decoration: underline;
         }
 
         /* Footer */
         footer {
             background: var(--fluent-bg-acrylic);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid var(--fluent-border-primary);
-            padding: 2rem 0;
-            margin-top: 5rem;
+            backdrop-filter: blur(25px); /* Mayor desenfoque */
+            -webkit-backdrop-filter: blur(25px);
+            border-top: 1px solid var(--fluent-border-secondary);
+            padding: 2.5rem 0; /* Mayor padding */
+            margin-top: 6rem; /* Más espacio */
             text-align: center;
             color: var(--fluent-text-secondary);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4); /* Sombra inferior */
         }
 
         /* Animations */
@@ -414,34 +403,11 @@
             }
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-section {
-                text-align: center;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .section-header {
-                font-size: 2rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll Animations */
+        /* Scroll Animations (refined) */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s var(--fluent-ease-out);
+            transform: translateY(30px); /* Más desplazamiento inicial */
+            transition: all 0.8s var(--fluent-ease-out); /* Transición más larga y suave */
         }
 
         .animate-on-scroll.animated {
@@ -449,28 +415,40 @@
             transform: translateY(0);
         }
 
-        /* Enhanced glow effects for dark mode */
-        .fluent-card:hover .project-image,
-        .fluent-card:hover .skill-icon {
-            filter: brightness(1.1);
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: clamp(2rem, 6vw, 3.5rem);
+            }
+            .hero-section .col-lg-4 {
+                order: -1; /* Mueve la imagen arriba en pantallas pequeñas */
+                margin-bottom: 2rem;
+            }
         }
 
-        /* Scrollbar styling for dark mode */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--fluent-bg-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--fluent-border-secondary);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--fluent-accent);
+        @media (max-width: 768px) {
+            .hero-section {
+                text-align: center;
+                min-height: unset; /* Permite que el contenido determine la altura */
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+            
+            .section-header {
+                font-size: 2rem;
+            }
+            
+            .projects-grid, .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-image {
+                height: 180px; /* Ajuste para móviles */
+            }
         }
     </style>
 </head>
@@ -479,7 +457,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#inicio">Cristhian Dávila</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -497,7 +475,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center justify-content-center">
                 <div class="col-lg-8 hero-content">
                     <div class="fade-in-up">
                         <h1 class="hero-title">Hola, soy Cristhian Dávila</h1>
@@ -729,3 +707,38 @@
 
             // Observe all elements with animate-on-scroll class
             document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Skills progress animation
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const progress = bar.getAttribute('data-progress');
+                        setTimeout(() => {
+                            bar.style.width = `${progress}%`;
+                        }, 300);
+                        skillObserver.unobserve(bar);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            skillBars.forEach(bar => {
+                skillObserver.observe(bar);
+            });
+
+            // Navbar background on scroll (adjusted for dark mode)
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(44, 44, 44, 0.95)'; /* Más opaco al hacer scroll */
+                } else {
+                    navbar.style.background = 'var(--fluent-bg-acrylic)'; /* Más transparente al inicio */
+                }
+            });
+        });
+    </script>
+</body>
+</html>
