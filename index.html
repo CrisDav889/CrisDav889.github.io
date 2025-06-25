@@ -3,71 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cristhian Dávila</title>
+    <title>Cristhian Dávila - Portafolio Fluent</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-dark: #0f1020;
             --secondary-dark: #1a1a2e;
-            --accent-color: #6a5acd;
+            --accent-color: #0078D4; /* Azul de acento Fluent */
             --text-light: #e0e0e0;
+            --acrylic-light: rgba(255, 255, 255, 0.08); /* Fondo acrílico más sutil para elementos */
+            --acrylic-dark: rgba(0, 0, 0, 0.3); /* Acrílico más oscuro para elementos */
+            --border-color: rgba(255, 255, 255, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --hover-glow: rgba(0, 120, 212, 0.3); /* Resplandor al pasar el ratón */
+            --gradient-start: #1e1e2d;
+            --gradient-end: #0a0a1a;
         }
+
         body {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             color: var(--text-light);
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif; /* Fuente tipo Fluent */
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
+
+        /* Efecto acrílico mejorado */
         .glassmorphic {
-            background: rgba(106, 90, 205, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.125);
-            border-radius: 15px;
+            background: var(--acrylic-light);
+            backdrop-filter: blur(20px) saturate(180%); /* Mayor desenfoque y saturación */
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px; /* Bordes más suaves */
+            box-shadow: 0 4px 10px var(--shadow-color); /* Sombra sutil */
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden; /* Para el efecto de revelado */
         }
+
+        .glassmorphic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--hover-glow) 0%, transparent 15%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none; /* Asegura que no bloquee interacciones */
+        }
+
+        .glassmorphic:hover::before {
+            opacity: 1;
+        }
+
         .navbar {
-            background: rgba(15, 16, 32, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 16, 32, 0.6); /* Más transparente */
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
+
+        .navbar-brand, .nav-link {
+            color: var(--text-light) !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: var(--accent-color) !important;
+            text-shadow: 0 0 5px var(--accent-color); /* Pequeño brillo al pasar el ratón */
+        }
+
         .section-header {
             position: relative;
             color: var(--accent-color);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: bold;
+            letter-spacing: 4px; /* Mayor espaciado */
+            font-weight: 600; /* Más robusto */
+            padding-bottom: 15px; /* Espacio para el subrayado */
         }
+
         .section-header::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
+            width: 120px; /* Más ancho */
+            height: 4px; /* Más grueso */
             background: var(--accent-color);
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--accent-color); /* Efecto de luz */
         }
+
         .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
+
         .project-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(106, 90, 205, 0.3);
+            transform: translateY(-5px); /* Pequeño levantamiento */
+            box-shadow: 0 10px 25px var(--hover-glow); /* Sombra con el color de acento */
+            border-color: var(--accent-color);
         }
+
+        .project-card .card-title {
+            color: var(--accent-color) !important;
+            font-weight: 600;
+        }
+
+        .project-card img {
+            border-radius: 6px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.02); /* Ligeramente más grande al pasar el ratón */
+        }
+
         .skill-bar {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
+            height: 12px; /* Más delgado */
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
         }
+
         .skill-progress {
-            background: var(--accent-color);
+            background: linear-gradient(90deg, var(--accent-color) 0%, #3e9edb 100%); /* Degradado para el progreso */
             height: 100%;
             transition: width 1.5s ease-in-out;
+            border-radius: 10px; /* Mantener bordes redondeados */
+            box-shadow: 0 0 8px rgba(0, 120, 212, 0.6); /* Brillo en la barra de progreso */
         }
+
         #particles-js {
-            position: absolute;
+            position: fixed; /* Ocupa toda la ventana */
             width: 100%;
             height: 100%;
             z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        /* Estilos específicos para la sección de contacto */
+        #contacto .glassmorphic p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        #contacto .glassmorphic p::before {
+            content: '•'; /* Pequeño punto como viñeta */
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 1.5em;
+            line-height: 1;
+        }
+
+        .btn {
+            background-color: var(--accent-color) !important;
+            color: white !important;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 120, 212, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 120, 212, 0.6);
+            filter: brightness(1.1); /* Ligeramente más brillante */
+        }
+
+        footer {
+            margin-top: auto; /* Empuja el footer hacia abajo */
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Mejoras en la imagen de perfil */
+        #inicio img {
+            border: 3px solid var(--accent-color); /* Borde con color de acento */
+            box-shadow: 0 0 15px var(--accent-color); /* Brillo alrededor de la imagen */
+            transition: transform 0.3s ease;
+        }
+
+        #inicio img:hover {
+            transform: scale(1.05) rotate(2deg); /* Pequeña rotación y escala al pasar el ratón */
+        }
+
+        .header-text {
+            text-shadow: 0 0 10px var(--accent-color); /* Sombra de texto para h1 */
         }
     </style>
 </head>
@@ -76,8 +216,10 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="#">
+                <span style="color: var(--accent-color); font-weight: bold;">C</span>risthian <span style="color: var(--accent-color); font-weight: bold;">D</span>ávila
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -92,189 +234,234 @@
         </div>
     </nav>
 
-    <header id="inicio" class="container text-center py-5 mt-5">
-        <div class="row">
-            <div class="col-md-8 mx-auto">
-                <center><img src="i'm.jpg" width="180px" style="border-radius: 50%;"></center>
-                <h1 class="display-4 animate__animated animate__fadeInDown">Cristhian Dávila</h1>
-                <p class="lead animate__animated animate__fadeInUp">Desarrollador Proactivo</p>
-                <p>Joven apasionado cuyas tecnologias dominadas son: HTML, CSS, JavaScript y Python.
+    <header id="inicio" class="container text-center py-5 mt-5 flex-grow-1 d-flex align-items-center">
+        <div class="row w-100">
+            <div class="col-md-8 mx-auto glassmorphic p-4 animate__animated animate__fadeIn">
+                <center><img src="i'm.jpg" width="180px" style="border-radius: 50%;" class="mb-4"></center>
+                <h1 class="display-4 animate__animated animate__fadeInDown header-text">Cristhian Dávila</h1>
+                <p class="lead animate__animated animate__fadeInUp" style="color: var(--accent-color); font-weight: 500;">Desarrollador Proactivo</p>
+                <p class="animate__animated animate__fadeInUp">
+                    Joven apasionado cuyas tecnologías dominadas son: HTML, CSS, JavaScript y Python.
                 </p>
             </div>
         </div>
     </header>
 
+    ---
+
     <section id="proyectos" class="container py-5">
-        <h2 class="text-center section-header mb-5">Proyectos</h2>
+        <h2 class="text-center section-header mb-5 animate__animated animate__fadeIn">Proyectos</h2>
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100">
+                <div class="card project-card glassmorphic h-100 animate__animated animate__fadeInUp animate__delay-0-2s">
                     <div class="card-body">
-                        <h5 class="card-title" style="color: #6a5acd;">Lista de tareas Web</h5>
-                        <img src="shop_sim.png" style="border-radius: 15px; width: 200px;">
-                        <p style="color: #e0e0e0;">Soluciones logicas con desarrollo web.</p>
-                        <a href="https://github.com/CrisDav889/to-do-list"><img src="github-sign.png" width="40px"></a>
+                        <h5 class="card-title">Lista de tareas Web</h5>
+                        <img src="shop_sim.png" class="img-fluid my-3" alt="Lista de Tareas">
+                        <p style="color: #e0e0e0;">Soluciones lógicas con desarrollo web.</p>
+                        <a href="https://github.com/CrisDav889/to-do-list" target="_blank" class="btn btn-sm mt-3">
+                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub"> Ver en GitHub
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100">
+                <div class="card project-card glassmorphic h-100 animate__animated animate__fadeInUp animate__delay-0-4s">
                     <div class="card-body">
-                        <h5 class="card-title" style="color: #6a5acd;">API del clima</h5>
-                        <img src="clima.png" style="width: 200px; border-radius: 15px;">
+                        <h5 class="card-title">API del clima</h5>
+                        <img src="clima.png" class="img-fluid my-3" alt="API del clima">
                         <p style="color: #e0e0e0;">Utilidad aplicable a cualquier ciudad.</p>
-                        <br><br><br>
-                        <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real"><img src="github-sign.png" width="40px"></a>
+                        <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real" target="_blank" class="btn btn-sm mt-3">
+                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub"> Ver en GitHub
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100">
+                <div class="card project-card glassmorphic h-100 animate__animated animate__fadeInUp animate__delay-0-6s">
                     <div class="card-body">
-                        <h5 class="card-title" style="color: #6a5acd;">Calculadora de sistemas de ecuaciones</h5>
-                        <img src="sistemas de ecuaciones.png" style="width: 200px; border-radius: 15px;">
+                        <h5 class="card-title">Calculadora de sistemas de ecuaciones</h5>
+                        <img src="sistemas de ecuaciones.png" class="img-fluid my-3" alt="Calculadora de Ecuaciones">
                         <p style="color: #e0e0e0;">Automatización efectiva.</p>
-                        <br><br>
-                        <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2"><img src="github-sign.png" width="40px"></a>
+                        <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2" target="_blank" class="btn btn-sm mt-3">
+                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub"> Ver en GitHub
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    ---
 
     <section id="habilidades" class="container py-5">
-        <h2 class="text-center section-header mb-5">Habilidades</h2>
+        <h2 class="text-center section-header mb-5 animate__animated animate__fadeIn">Habilidades</h2>
         <div class="row">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <span>JavaScript</span>
-                        <img src="js.png" style="height: 70px ; width:70px ;">
+            <div class="col-md-6 mb-4 animate__animated animate__fadeInLeft">
+                <div class="glassmorphic p-4">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fs-5">JavaScript</span>
+                            <img src="js.png" style="height: 50px; width: 50px;" alt="JavaScript Icon">
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0;" data-progress="85"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 0;" data-progress="85"></div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <span>Dominio de la Inteligencia Artificial/Prompt engineering</span>
-                        <img src="artificial-intelligence_3733750.png" style="height: 70px ; width:70px ;">
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 0;" data-progress="75"></div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fs-5">Dominio de la Inteligencia Artificial / Prompt Engineering</span>
+                            <img src="artificial-intelligence_3733750.png" style="height: 50px; width: 50px;" alt="AI Icon">
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0;" data-progress="75"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <span>Python</span>
-                        <img src="python.png" style="height: 70px ; width:70px ;">
+            <div class="col-md-6 mb-4 animate__animated animate__fadeInRight">
+                <div class="glassmorphic p-4">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fs-5">Python</span>
+                            <img src="python.png" style="height: 50px; width: 50px;" alt="Python Icon">
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0;" data-progress="70"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 0;" data-progress="70"></div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <span>HTML,CSS</span>
-                        <img src="coding.png" style="height: 70px ; width:70px ;">
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 0;" data-progress="65"></div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fs-5">HTML, CSS</span>
+                            <img src="coding.png" style="height: 50px; width: 50px;" alt="HTML CSS Icon">
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0;" data-progress="65"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    ---
 
     <section id="certificaciones" class="container py-5">
-    <h2 class="text-center section-header mb-5">Certificaciones</h2>
-    <div class="row g-4">
-        
-        <div class="col-md-4">
-            <div class="card project-card glassmorphic h-100">
-                <div class="card-body">
-                    <h5 class="card-title" style="color: #6a5acd;">Competencias digitales para profesionales</h5><br>
-                    <img src="Certificado 1.png" style="border-radius: 15px; width: 300px;">
-                    <p style="color: #e0e0e0;">Emitido por: Google skillshop</p>
-                    <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
-                    <a href="https://skillshop.exceedlms.com/student/award/dyFtXiXAPHiqx3QHLchWhmXg" class="btn" style="background-color: #6a5acd; color: white;">Ver Credencial</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        <div class="col-md-4">
-            <div class="card project-card glassmorphic h-100">
-                <div class="card-body">
-                    <h5 class="card-title" style="color: #6a5acd;">Introducción al desarrollo web HTML/CSS 2/2</h5>
-                    <img src="Certificado 2.png" style="border-radius: 15px; width: 300px;">
-                    <p style="color: #e0e0e0;">Emitido por: Google skillshop</p>
-                    <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
-                    <a href="https://skillshop.exceedlms.com/student/award/7XDESQDfAPLGj3uWpp26sFZs" class="btn" style="background-color: #6a5acd; color: white;">Ver Credencial</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        <div class="col-md-4">
-            <div class="card project-card glassmorphic h-100">
-                <div class="card-body">
-                    <h5 class="card-title" style="color: #6a5acd;">Python 101 for data cience</h5><br>
-                    <img src="Certificado 3.png" style="border-radius: 15px; width: 300px;">
-                    <p style="color: #e0e0e0;">Emitido por: Cognitive Class by IBM</p>
-                    <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
-                    <a href="https://courses.cognitiveclass.ai/certificates/542e80f5531744f9be80d3d3407cae8e" class="btn" style="background-color: #6a5acd; color: white;">Ver Credencial</a>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</section>
-
-    <section id="contacto" class="container py-5">
-        <h2 class="text-center section-header mb-5">Contacto</h2>
-        <div class="row">
-            <div class="col-md-6 mx-auto glassmorphic p-4">
-                    <div class="mb-3">
-                        <p>Email: davcris889@gmail.com</p>
+        <h2 class="text-center section-header mb-5 animate__animated animate__fadeIn">Certificaciones</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card project-card glassmorphic h-100 animate__animated animate__zoomIn animate__delay-0-2s">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Competencias digitales para profesionales</h5>
+                        <img src="Certificado 1.png" class="img-fluid my-3" alt="Certificado Digitales">
+                        <p style="color: #e0e0e0;">Emitido por: Google Skillshop</p>
+                        <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
+                        <a href="https://skillshop.exceedlms.com/student/award/dyFtXiXAPHiqx3QHLchWhmXg" target="_blank" class="btn mt-auto">Ver Credencial</a>
                     </div>
-                    <div class="mb-3">
-                        <p>Instagram: cris_dav47</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card project-card glassmorphic h-100 animate__animated animate__zoomIn animate__delay-0-4s">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Introducción al desarrollo web HTML/CSS 2/2</h5>
+                        <img src="Certificado 2.png" class="img-fluid my-3" alt="Certificado HTML CSS">
+                        <p style="color: #e0e0e0;">Emitido por: Google Skillshop</p>
+                        <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
+                        <a href="https://skillshop.exceedlms.com/student/award/7XDESQDfAPLGj3uWpp26sFZs" target="_blank" class="btn mt-auto">Ver Credencial</a>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card project-card glassmorphic h-100 animate__animated animate__zoomIn animate__delay-0-6s">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Python 101 for data science</h5>
+                        <img src="Certificado 3.png" class="img-fluid my-3" alt="Certificado Python">
+                        <p style="color: #e0e0e0;">Emitido por: Cognitive Class by IBM</p>
+                        <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
+                        <a href="https://courses.cognitiveclass.ai/certificates/542e80f5531744f9be80d3d3407cae8e" target="_blank" class="btn mt-auto">Ver Credencial</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="text-center py-3">
-        <p>&copy; 2024 Cristhian Andrés Dávila Morales</p>
+    ---
+
+    <section id="contacto" class="container py-5">
+        <h2 class="text-center section-header mb-5 animate__animated animate__fadeIn">Contacto</h2>
+        <div class="row">
+            <div class="col-md-6 mx-auto glassmorphic p-4 animate__animated animate__fadeInUp">
+                <div class="mb-3">
+                    <p>Email: <a href="mailto:davcris889@gmail.com" style="color: var(--text-light); text-decoration: none;">davcris889@gmail.com</a></p>
+                </div>
+                <div class="mb-3">
+                    <p>Instagram: <a href="https://www.instagram.com/cris_dav47" target="_blank" style="color: var(--text-light); text-decoration: none;">cris_dav47</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <p>&copy; 2024 Cristhian Andrés Dávila Morales. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        
+        // Configuración de Particles.js
         particlesJS('particles-js', {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#6a5acd' },
+                color: { value: '#0078D4' }, /* Color de acento Fluent */
                 shape: { type: 'circle' },
-                opacity: { value: 0.5, random: false },
+                opacity: { value: 0.6, random: false },
                 size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#6a5acd', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 6, direction: 'none', random: false }
-            }
+                line_linked: { enable: true, distance: 150, color: '#0078D4', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 4, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 100, duration: 0.4 },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
         });
 
-        
+        // Animación de barras de habilidad
         document.addEventListener('DOMContentLoaded', function() {
             const skillBars = document.querySelectorAll('.skill-progress');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const progress = bar.getAttribute('data-progress');
+                        setTimeout(() => {
+                            bar.style.width = `${progress}%`;
+                        }, 300); // Pequeño retraso para que la animación sea visible al hacer scroll
+                        observer.unobserve(bar); // Deja de observar una vez que la animación se ha disparado
+                    }
+                });
+            }, { threshold: 0.7 }); // Dispara cuando el 70% del elemento es visible
+
             skillBars.forEach(bar => {
-                const progress = bar.getAttribute('data-progress');
-                setTimeout(() => {
-                    bar.style.width = `${progress}%`;
-                }, 500);
+                observer.observe(bar);
+            });
+
+            // Efecto de revelado (mouse-tracking glow) para elementos glassmorphic
+            document.querySelectorAll('.glassmorphic').forEach(item => {
+                item.addEventListener('mousemove', (e) => {
+                    const rect = item.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // x position within the element.
+                    const y = e.clientY - rect.top;  // y position within the element.
+                    item.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+                    item.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+                });
             });
         });
     </script>
