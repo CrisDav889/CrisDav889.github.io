@@ -9,35 +9,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Fluent Design System Colors */
-            --fluent-bg-primary: #f3f2f1;
-            --fluent-bg-secondary: #faf9f8;
-            --fluent-bg-tertiary: #ffffff;
-            --fluent-bg-quaternary: #edebe9;
-            --fluent-bg-acrylic: rgba(243, 242, 241, 0.7);
-            --fluent-bg-card: rgba(255, 255, 255, 0.8);
+            /* Fluent Design System Colors - Dark Mode */
+            --fluent-bg-primary: #1f1f1f;
+            --fluent-bg-secondary: #2d2d30;
+            --fluent-bg-tertiary: #3c3c3c;
+            --fluent-bg-quaternary: #252526;
+            --fluent-bg-acrylic: rgba(31, 31, 31, 0.8);
+            --fluent-bg-card: rgba(60, 60, 60, 0.8);
             
             /* Fluent Colors */
             --fluent-accent: #0078d4;
             --fluent-accent-hover: #106ebe;
             --fluent-accent-pressed: #005a9e;
-            --fluent-accent-light: rgba(0, 120, 212, 0.1);
+            --fluent-accent-light: rgba(0, 120, 212, 0.2);
             
-            /* Text Colors */
-            --fluent-text-primary: #323130;
-            --fluent-text-secondary: #605e5c;
-            --fluent-text-tertiary: #8a8886;
+            /* Text Colors - Dark Mode */
+            --fluent-text-primary: #ffffff;
+            --fluent-text-secondary: #cccccc;
+            --fluent-text-tertiary: #9d9d9d;
             --fluent-text-inverse: #ffffff;
             
-            /* Border Colors */
-            --fluent-border-primary: #edebe9;
-            --fluent-border-secondary: #d2d0ce;
+            /* Border Colors - Dark Mode */
+            --fluent-border-primary: #464647;
+            --fluent-border-secondary: #6f6f6f;
             
-            /* Shadows */
-            --fluent-shadow-2: 0 0.5px 1px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05);
-            --fluent-shadow-4: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05);
-            --fluent-shadow-8: 0 2px 4px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.05);
-            --fluent-shadow-16: 0 4px 8px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.05);
+            /* Shadows - Enhanced for dark mode */
+            --fluent-shadow-2: 0 0.5px 1px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);
+            --fluent-shadow-4: 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
+            --fluent-shadow-8: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2);
+            --fluent-shadow-16: 0 4px 8px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3);
             
             /* Corner Radius */
             --fluent-corner-radius-small: 2px;
@@ -98,6 +98,20 @@
             background: var(--fluent-accent-light);
         }
 
+        /* Bootstrap navbar toggler for dark mode */
+        .navbar-toggler {
+            border: 1px solid var(--fluent-border-primary);
+            padding: 0.25rem 0.5rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 120, 212, 0.25);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
         /* Fluent Cards */
         .fluent-card {
             background: var(--fluent-bg-card);
@@ -118,7 +132,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             opacity: 0;
             transition: opacity var(--fluent-duration-normal) var(--fluent-ease-out);
         }
@@ -127,6 +141,7 @@
             transform: translateY(-2px);
             box-shadow: var(--fluent-shadow-16);
             border-color: var(--fluent-accent-light);
+            background: rgba(60, 60, 60, 0.9);
         }
 
         .fluent-card:hover::before {
@@ -182,7 +197,7 @@
 
         .hero-image:hover {
             transform: scale(1.05);
-            box-shadow: var(--fluent-shadow-16), 0 0 40px rgba(0, 120, 212, 0.3);
+            box-shadow: var(--fluent-shadow-16), 0 0 40px rgba(0, 120, 212, 0.4);
         }
 
         /* Section Headers */
@@ -229,6 +244,7 @@
             object-fit: cover;
             border-radius: var(--fluent-corner-radius-medium);
             margin-bottom: 1rem;
+            border: 1px solid var(--fluent-border-primary);
         }
 
         .project-title {
@@ -275,6 +291,7 @@
             width: 40px;
             height: 40px;
             object-fit: contain;
+            filter: brightness(1.2);
         }
 
         .skill-bar {
@@ -430,6 +447,30 @@
         .animate-on-scroll.animated {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Enhanced glow effects for dark mode */
+        .fluent-card:hover .project-image,
+        .fluent-card:hover .skill-icon {
+            filter: brightness(1.1);
+        }
+
+        /* Scrollbar styling for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--fluent-bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--fluent-border-secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--fluent-accent);
         }
     </style>
 </head>
@@ -688,38 +729,3 @@
 
             // Observe all elements with animate-on-scroll class
             document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-
-            // Skills progress animation
-            const skillBars = document.querySelectorAll('.skill-progress');
-            const skillObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const bar = entry.target;
-                        const progress = bar.getAttribute('data-progress');
-                        setTimeout(() => {
-                            bar.style.width = `${progress}%`;
-                        }, 300);
-                        skillObserver.unobserve(bar);
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            skillBars.forEach(bar => {
-                skillObserver.observe(bar);
-            });
-
-            // Navbar background on scroll
-            window.addEventListener('scroll', () => {
-                const navbar = document.querySelector('.navbar');
-                if (window.scrollY > 50) {
-                    navbar.style.background = 'rgba(243, 242, 241, 0.95)';
-                } else {
-                    navbar.style.background = 'rgba(243, 242, 241, 0.7)';
-                }
-            });
-        });
-    </script>
-</body>
-</html>
