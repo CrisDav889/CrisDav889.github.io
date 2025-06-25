@@ -6,87 +6,126 @@
     <title>Cristhian Dávila - Portafolio Fluent</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <!-- Google Fonts para una tipografía más limpia y moderna (Segoe UI es ideal para Fluent) -->
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #0f1020;
-            --secondary-dark: #1a1a2e;
-            --accent-color: #0078D4; /* Azul de acento Fluent */
-            --text-light: #e0e0e0;
-            --acrylic-light: rgba(255, 255, 255, 0.08); /* Fondo acrílico más sutil para elementos */
-            --acrylic-dark: rgba(0, 0, 0, 0.3); /* Acrílico más oscuro para elementos */
-            --border-color: rgba(255, 255, 255, 0.15);
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --hover-glow: rgba(0, 120, 212, 0.3); /* Resplandor al pasar el ratón */
-            --gradient-start: #1e1e2d;
-            --gradient-end: #0a0a1a;
+            /* Colores base para Fluent Design (Oscuro Profundo) */
+            --primary-bg-dark: #121212; /* Fondo principal muy oscuro, casi negro */
+            --secondary-bg-dark: #1e1e1e; /* Fondo para elementos o áreas secundarias */
+            --tertiary-bg-dark: #2a2a2a; /* Fondo para elementos más elevados */
+
+            /* Colores de texto y borde */
+            --text-light: #f0f0f0; /* Texto claro para contraste */
+            --text-muted: #b0b0b0; /* Texto secundario o tenue */
+            --border-color: rgba(255, 255, 255, 0.1); /* Borde sutil */
+
+            /* Color de acento (Azul Microsoft Fluent) */
+            --accent-color: #0078D4; /* Azul vibrante para elementos interactivos */
+            --accent-light: #2094f3; /* Tono más claro del acento */
+            --accent-dark: #005691; /* Tono más oscuro del acento */
+
+            /* Efectos acrílicos */
+            --acrylic-light: rgba(30, 30, 30, 0.7); /* Fondo acrílico semi-transparente y oscuro */
+            --acrylic-blur: 30px; /* Nivel de desenfoque del acrílico */
+            --acrylic-saturate: 150%; /* Nivel de saturación del acrílico */
+
+            /* Sombras y brillos */
+            --shadow-color-dark: rgba(0, 0, 0, 0.6); /* Sombra oscura para profundidad */
+            --hover-glow-accent: rgba(0, 120, 212, 0.4); /* Resplandor de acento al pasar el ratón */
+            --hover-glow-subtle: rgba(255, 255, 255, 0.05); /* Resplandor sutil para superficies */
         }
 
         body {
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            /* Fondo combinado para profundidad Fluent */
+            background: radial-gradient(circle at 50% 0%, var(--tertiary-bg-dark) 0%, var(--primary-bg-dark) 60%),
+                        linear-gradient(180deg, var(--secondary-bg-dark) 0%, var(--primary-bg-dark) 100%);
+            background-blend-mode: multiply;
             color: var(--text-light);
-            font-family: 'Segoe UI', Arial, sans-serif; /* Fuente tipo Fluent */
+            font-family: 'Segoe UI', sans-serif;
             overflow-x: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Efecto acrílico mejorado */
-        .glassmorphic {
+        /* Contenedores con efecto acrílico (Glassmorphic renombrado para ser más general) */
+        .fluent-card {
             background: var(--acrylic-light);
-            backdrop-filter: blur(20px) saturate(180%); /* Mayor desenfoque y saturación */
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(var(--acrylic-blur)) saturate(var(--acrylic-saturate));
+            -webkit-backdrop-filter: blur(var(--acrylic-blur)) saturate(var(--acrylic-saturate));
             border: 1px solid var(--border-color);
-            border-radius: 8px; /* Bordes más suaves */
-            box-shadow: 0 4px 10px var(--shadow-color); /* Sombra sutil */
-            transition: all 0.3s ease-in-out;
+            border-radius: 12px; /* Bordes ligeramente más redondeados */
+            box-shadow: 0 8px 20px var(--shadow-color-dark); /* Sombra más pronunciada para profundidad */
+            transition: all 0.4s ease-in-out;
             position: relative;
-            overflow: hidden; /* Para el efecto de revelado */
+            overflow: hidden;
+            transform: translateZ(0); /* Acelera la animación en 3D */
         }
 
-        .glassmorphic::before {
+        /* Efecto de revelado (Reveal Highlight) al pasar el ratón */
+        .fluent-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--hover-glow) 0%, transparent 15%);
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--hover-glow-accent) 0%, transparent 15%);
             opacity: 0;
             transition: opacity 0.3s ease;
-            pointer-events: none; /* Asegura que no bloquee interacciones */
+            pointer-events: none;
+            z-index: 1; /* Asegura que el brillo esté encima del contenido */
         }
 
-        .glassmorphic:hover::before {
+        .fluent-card:hover::before {
             opacity: 1;
         }
 
+        /* Estilos para el navbar */
         .navbar {
-            background: rgba(15, 16, 32, 0.6); /* Más transparente */
-            backdrop-filter: blur(15px) saturate(180%);
-            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            background: rgba(18, 18, 18, 0.7); /* Fondo de navbar semi-transparente oscuro */
+            backdrop-filter: blur(25px) saturate(160%); /* Mayor desenfoque */
+            -webkit-backdrop-filter: blur(25px) saturate(160%);
             border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 2px 8px var(--shadow-color);
+            box-shadow: 0 4px 15px var(--shadow-color-dark); /* Sombra más fuerte */
         }
 
-        .navbar-brand, .nav-link {
+        .navbar-brand {
             color: var(--text-light) !important;
+            font-weight: 600;
+            letter-spacing: 1px;
             transition: color 0.3s ease;
         }
 
-        .navbar-brand:hover, .nav-link:hover {
+        .navbar-brand:hover {
             color: var(--accent-color) !important;
-            text-shadow: 0 0 5px var(--accent-color); /* Pequeño brillo al pasar el ratón */
+            text-shadow: 0 0 8px var(--accent-color);
         }
 
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 400;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .nav-link:hover, .nav-item.active .nav-link {
+            color: var(--accent-light) !important;
+            background-color: rgba(0, 120, 212, 0.1); /* Fondo sutil al pasar el ratón */
+            text-shadow: 0 0 5px var(--accent-light);
+        }
+
+        /* Encabezados de sección */
         .section-header {
             position: relative;
-            color: var(--accent-color);
+            color: var(--accent-light);
             text-transform: uppercase;
-            letter-spacing: 4px; /* Mayor espaciado */
-            font-weight: 600; /* Más robusto */
-            padding-bottom: 15px; /* Espacio para el subrayado */
+            letter-spacing: 5px; /* Más espaciado */
+            font-weight: 700; /* Más audaz */
+            padding-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 120, 212, 0.4); /* Brillo sutil en el texto */
         }
 
         .section-header::after {
@@ -95,119 +134,150 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px; /* Más ancho */
-            height: 4px; /* Más grueso */
-            background: var(--accent-color);
-            border-radius: 2px;
-            box-shadow: 0 0 8px var(--accent-color); /* Efecto de luz */
+            width: 150px; /* Más ancho */
+            height: 5px; /* Más grueso */
+            background: linear-gradient(90deg, transparent 0%, var(--accent-color) 50%, transparent 100%); /* Degradado para el subrayado */
+            border-radius: 3px;
+            box-shadow: 0 0 12px var(--accent-color); /* Efecto de luz más fuerte */
         }
 
+        /* Tarjetas de proyecto y certificación */
         .project-card {
             cursor: pointer;
             transform: translateY(0);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px); /* Pequeño levantamiento */
-            box-shadow: 0 10px 25px var(--hover-glow); /* Sombra con el color de acento */
-            border-color: var(--accent-color);
+            transform: translateY(-8px); /* Mayor levantamiento */
+            box-shadow: 0 15px 35px var(--hover-glow-accent); /* Sombra más grande y luminosa */
+            border-color: var(--accent-light);
         }
 
         .project-card .card-title {
-            color: var(--accent-color) !important;
+            color: var(--accent-light) !important;
             font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         .project-card img {
-            border-radius: 6px;
-            box-shadow: 0 2px 5px var(--shadow-color);
-            transition: transform 0.3s ease;
+            border-radius: 8px; /* Bordes de imagen más suaves */
+            box-shadow: 0 4px 10px var(--shadow-color-dark);
+            transition: transform 0.4s ease;
         }
 
         .project-card:hover img {
-            transform: scale(1.02); /* Ligeramente más grande al pasar el ratón */
+            transform: scale(1.03); /* Mayor escala al pasar el ratón */
         }
 
+        /* Barras de habilidad */
         .skill-bar {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--secondary-bg-dark); /* Fondo de la barra más oscuro */
             border-radius: 10px;
             overflow: hidden;
-            height: 12px; /* Más delgado */
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+            height: 15px; /* Ligeramente más alta */
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4);
         }
 
         .skill-progress {
-            background: linear-gradient(90deg, var(--accent-color) 0%, #3e9edb 100%); /* Degradado para el progreso */
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-light) 100%); /* Degradado más pronunciado */
             height: 100%;
-            transition: width 1.5s ease-in-out;
-            border-radius: 10px; /* Mantener bordes redondeados */
-            box-shadow: 0 0 8px rgba(0, 120, 212, 0.6); /* Brillo en la barra de progreso */
+            transition: width 1.8s ease-in-out; /* Animación más suave y lenta */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 120, 212, 0.8); /* Brillo más fuerte */
         }
 
         #particles-js {
-            position: fixed; /* Ocupa toda la ventana */
+            position: fixed;
             width: 100%;
             height: 100%;
             z-index: -1;
             top: 0;
             left: 0;
+            opacity: 0.8; /* Ligeramente menos opaco para no competir con el contenido */
         }
 
-        /* Estilos específicos para la sección de contacto */
-        #contacto .glassmorphic p {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+        /* Estilos para la sección de contacto */
+        #contacto .fluent-card p {
+            font-size: 1.15rem; /* Texto un poco más grande */
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
+            color: var(--text-light);
         }
 
-        #contacto .glassmorphic p::before {
-            content: '•'; /* Pequeño punto como viñeta */
+        #contacto .fluent-card p::before {
+            content: '>'; /* Cambiado a un ">" para un toque diferente */
             color: var(--accent-color);
-            margin-right: 10px;
-            font-size: 1.5em;
+            margin-right: 12px;
+            font-size: 1.8em;
             line-height: 1;
+            font-weight: bold;
+        }
+        #contacto .fluent-card a {
+            color: var(--accent-light); /* Enlaces del contacto con color de acento */
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        #contacto .fluent-card a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
         }
 
+
+        /* Botones de acción */
         .btn {
             background-color: var(--accent-color) !important;
             color: white !important;
             border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
+            border-radius: 6px; /* Ligeramente más redondeado */
+            padding: 12px 25px; /* Mayor padding */
             font-weight: 600;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 120, 212, 0.4);
+            box-shadow: 0 6px 15px rgba(0, 120, 212, 0.5); /* Sombra más fuerte */
+            text-transform: uppercase; /* Mayúsculas para un aspecto más audaz */
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 120, 212, 0.6);
-            filter: brightness(1.1); /* Ligeramente más brillante */
+            transform: translateY(-3px); /* Mayor levantamiento */
+            box-shadow: 0 8px 20px rgba(0, 120, 212, 0.8); /* Sombra más intensa al pasar el ratón */
+            filter: brightness(1.2); /* Más brillo */
         }
 
+        /* Pie de página */
         footer {
-            margin-top: auto; /* Empuja el footer hacia abajo */
-            padding: 20px 0;
-            background: rgba(0, 0, 0, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.7);
+            margin-top: auto;
+            padding: 25px 0; /* Más padding */
+            background: var(--secondary-bg-dark); /* Fondo más definido */
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted); /* Texto más tenue */
+            font-size: 0.95rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Mejoras en la imagen de perfil */
+        /* Imagen de perfil */
         #inicio img {
-            border: 3px solid var(--accent-color); /* Borde con color de acento */
-            box-shadow: 0 0 15px var(--accent-color); /* Brillo alrededor de la imagen */
-            transition: transform 0.3s ease;
+            border: 4px solid var(--accent-light); /* Borde más grueso y brillante */
+            box-shadow: 0 0 25px var(--accent-color), 0 0 10px rgba(0, 120, 212, 0.5); /* Brillo doble */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            filter: grayscale(20%) brightness(1.1); /* Efecto sutil para que coincida con el tema oscuro */
         }
 
         #inicio img:hover {
-            transform: scale(1.05) rotate(2deg); /* Pequeña rotación y escala al pasar el ratón */
+            transform: scale(1.08) rotate(3deg); /* Mayor escala y rotación */
+            box-shadow: 0 0 35px var(--accent-light), 0 0 15px rgba(0, 120, 212, 0.7); /* Brillo más intenso al pasar el ratón */
+            filter: grayscale(0%) brightness(1.0); /* Recupera el color y brillo normal */
         }
 
         .header-text {
-            text-shadow: 0 0 10px var(--accent-color); /* Sombra de texto para h1 */
+            text-shadow: 0 0 15px var(--accent-color), 0 0 8px rgba(255, 255, 255, 0.3); /* Sombra de texto para h1 */
+            font-weight: 700;
+        }
+        .lead {
+            color: var(--accent-light) !important;
+            font-weight: 600 !important;
+            text-shadow: 0 0 5px rgba(0, 120, 212, 0.3);
         }
     </style>
 </head>
@@ -236,54 +306,54 @@
 
     <header id="inicio" class="container text-center py-5 mt-5 flex-grow-1 d-flex align-items-center">
         <div class="row w-100">
-            <div class="col-md-8 mx-auto glassmorphic p-4 animate__animated animate__fadeIn">
+            <div class="col-md-8 mx-auto fluent-card p-5 animate__animated animate__fadeIn">
                 <center><img src="i'm.jpg" width="180px" style="border-radius: 50%;" class="mb-4"></center>
                 <h1 class="display-4 animate__animated animate__fadeInDown header-text">Cristhian Dávila</h1>
-                <p class="lead animate__animated animate__fadeInUp" style="color: var(--accent-color); font-weight: 500;">Desarrollador Proactivo</p>
-                <p class="animate__animated animate__fadeInUp">
+                <p class="lead animate__animated animate__fadeInUp">Desarrollador Proactivo</p>
+                <p class="animate__animated animate__fadeInUp" style="color: var(--text-light);">
                     Joven apasionado cuyas tecnologías dominadas son: HTML, CSS, JavaScript y Python.
+                    Con experiencia en el desarrollo de soluciones web y la implementación de automatizaciones.
+                    Siempre buscando aprender y aplicar nuevas tecnologías para crear experiencias digitales innovadoras.
                 </p>
             </div>
         </div>
     </header>
 
-    ---
-
     <section id="proyectos" class="container py-5">
         <h2 class="text-center section-header mb-5 animate__animated animate__fadeIn">Proyectos</h2>
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100 animate__animated animate__fadeInUp animate__delay-0-2s">
-                    <div class="card-body">
+                <div class="card project-card fluent-card h-100 animate__animated animate__fadeInUp animate__delay-0-2s">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Lista de tareas Web</h5>
-                        <img src="shop_sim.png" class="img-fluid my-3" alt="Lista de Tareas">
-                        <p style="color: #e0e0e0;">Soluciones lógicas con desarrollo web.</p>
-                        <a href="https://github.com/CrisDav889/to-do-list" target="_blank" class="btn btn-sm mt-3">
-                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub"> Ver en GitHub
+                        <img src="shop_sim.png" class="img-fluid my-3" alt="Lista de Tareas Web">
+                        <p style="color: var(--text-muted);">Aplicación web interactiva para gestionar tus tareas diarias, con funcionalidades de añadir, editar y eliminar.</p>
+                        <a href="https://github.com/CrisDav889/to-do-list" target="_blank" class="btn btn-sm mt-auto">
+                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub Icon"> Ver en GitHub
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100 animate__animated animate__fadeInUp animate__delay-0-4s">
-                    <div class="card-body">
+                <div class="card project-card fluent-card h-100 animate__animated animate__fadeInUp animate__delay-0-4s">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">API del clima</h5>
                         <img src="clima.png" class="img-fluid my-3" alt="API del clima">
-                        <p style="color: #e0e0e0;">Utilidad aplicable a cualquier ciudad.</p>
-                        <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real" target="_blank" class="btn btn-sm mt-3">
-                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub"> Ver en GitHub
+                        <p style="color: var(--text-muted);">Una interfaz sencilla para consultar el clima en tiempo real de cualquier ciudad del mundo, utilizando APIs públicas.</p>
+                        <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real" target="_blank" class="btn btn-sm mt-auto">
+                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub Icon"> Ver en GitHub
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100 animate__animated animate__fadeInUp animate__delay-0-6s">
-                    <div class="card-body">
+                <div class="card project-card fluent-card h-100 animate__animated animate__fadeInUp animate__delay-0-6s">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Calculadora de sistemas de ecuaciones</h5>
                         <img src="sistemas de ecuaciones.png" class="img-fluid my-3" alt="Calculadora de Ecuaciones">
-                        <p style="color: #e0e0e0;">Automatización efectiva.</p>
-                        <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2" target="_blank" class="btn btn-sm mt-3">
-                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub"> Ver en GitHub
+                        <p style="color: var(--text-muted);">Herramienta programada en Python para resolver sistemas de ecuaciones lineales 2x2, ideal para estudiantes y análisis rápido.</p>
+                        <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2" target="_blank" class="btn btn-sm mt-auto">
+                            <img src="github-sign.png" width="20px" class="me-2" alt="GitHub Icon"> Ver en GitHub
                         </a>
                     </div>
                 </div>
@@ -291,13 +361,11 @@
         </div>
     </section>
 
-    ---
-
     <section id="habilidades" class="container py-5">
         <h2 class="text-center section-header mb-5 animate__animated animate__fadeIn">Habilidades</h2>
         <div class="row">
             <div class="col-md-6 mb-4 animate__animated animate__fadeInLeft">
-                <div class="glassmorphic p-4">
+                <div class="fluent-card p-4">
                     <div class="mb-4">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="fs-5">JavaScript</span>
@@ -319,7 +387,7 @@
                 </div>
             </div>
             <div class="col-md-6 mb-4 animate__animated animate__fadeInRight">
-                <div class="glassmorphic p-4">
+                <div class="fluent-card p-4">
                     <div class="mb-4">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="fs-5">Python</span>
@@ -343,40 +411,38 @@
         </div>
     </section>
 
-    ---
-
     <section id="certificaciones" class="container py-5">
         <h2 class="text-center section-header mb-5 animate__animated animate__fadeIn">Certificaciones</h2>
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100 animate__animated animate__zoomIn animate__delay-0-2s">
+                <div class="card project-card fluent-card h-100 animate__animated animate__zoomIn animate__delay-0-2s">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Competencias digitales para profesionales</h5>
-                        <img src="Certificado 1.png" class="img-fluid my-3" alt="Certificado Digitales">
-                        <p style="color: #e0e0e0;">Emitido por: Google Skillshop</p>
-                        <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
+                        <img src="Certificado 1.png" class="img-fluid my-3" alt="Certificado de Competencias Digitales">
+                        <p style="color: var(--text-muted);">Emitido por: Google Skillshop</p>
+                        <p style="color: var(--text-muted);">Fecha: Diciembre, 2024</p>
                         <a href="https://skillshop.exceedlms.com/student/award/dyFtXiXAPHiqx3QHLchWhmXg" target="_blank" class="btn mt-auto">Ver Credencial</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100 animate__animated animate__zoomIn animate__delay-0-4s">
+                <div class="card project-card fluent-card h-100 animate__animated animate__zoomIn animate__delay-0-4s">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Introducción al desarrollo web HTML/CSS 2/2</h5>
-                        <img src="Certificado 2.png" class="img-fluid my-3" alt="Certificado HTML CSS">
-                        <p style="color: #e0e0e0;">Emitido por: Google Skillshop</p>
-                        <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
+                        <img src="Certificado 2.png" class="img-fluid my-3" alt="Certificado de Desarrollo Web HTML/CSS">
+                        <p style="color: var(--text-muted);">Emitido por: Google Skillshop</p>
+                        <p style="color: var(--text-muted);">Fecha: Diciembre, 2024</p>
                         <a href="https://skillshop.exceedlms.com/student/award/7XDESQDfAPLGj3uWpp26sFZs" target="_blank" class="btn mt-auto">Ver Credencial</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card project-card glassmorphic h-100 animate__animated animate__zoomIn animate__delay-0-6s">
+                <div class="card project-card fluent-card h-100 animate__animated animate__zoomIn animate__delay-0-6s">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Python 101 for data science</h5>
-                        <img src="Certificado 3.png" class="img-fluid my-3" alt="Certificado Python">
-                        <p style="color: #e0e0e0;">Emitido por: Cognitive Class by IBM</p>
-                        <p style="color: #e0e0e0;">Fecha: Diciembre, 2024</p>
+                        <img src="Certificado 3.png" class="img-fluid my-3" alt="Certificado de Python para Ciencia de Datos">
+                        <p style="color: var(--text-muted);">Emitido por: Cognitive Class by IBM</p>
+                        <p style="color: var(--text-muted);">Fecha: Diciembre, 2024</p>
                         <a href="https://courses.cognitiveclass.ai/certificates/542e80f5531744f9be80d3d3407cae8e" target="_blank" class="btn mt-auto">Ver Credencial</a>
                     </div>
                 </div>
@@ -384,17 +450,18 @@
         </div>
     </section>
 
-    ---
-
     <section id="contacto" class="container py-5">
         <h2 class="text-center section-header mb-5 animate__animated animate__fadeIn">Contacto</h2>
         <div class="row">
-            <div class="col-md-6 mx-auto glassmorphic p-4 animate__animated animate__fadeInUp">
+            <div class="col-md-6 mx-auto fluent-card p-4 animate__animated animate__fadeInUp">
                 <div class="mb-3">
-                    <p>Email: <a href="mailto:davcris889@gmail.com" style="color: var(--text-light); text-decoration: none;">davcris889@gmail.com</a></p>
+                    <p>Email: <a href="mailto:davcris889@gmail.com">davcris889@gmail.com</a></p>
                 </div>
                 <div class="mb-3">
-                    <p>Instagram: <a href="https://www.instagram.com/cris_dav47" target="_blank" style="color: var(--text-light); text-decoration: none;">cris_dav47</a></p>
+                    <p>Instagram: <a href="https://www.instagram.com/cris_dav47" target="_blank">cris_dav47</a></p>
+                </div>
+                <div class="mb-3">
+                    <p>LinkedIn: <a href="https://www.linkedin.com/in/cristhian-davila/" target="_blank">Cristhian Dávila</a></p>
                 </div>
             </div>
         </div>
@@ -413,10 +480,10 @@
                 number: { value: 80, density: { enable: true, value_area: 800 } },
                 color: { value: '#0078D4' }, /* Color de acento Fluent */
                 shape: { type: 'circle' },
-                opacity: { value: 0.6, random: false },
+                opacity: { value: 0.5, random: false }, /* Opacidad ligeramente reducida */
                 size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#0078D4', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 4, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+                line_linked: { enable: true, distance: 150, color: '#0078D4', opacity: 0.3, width: 1 }, /* Opacidad reducida en líneas */
+                move: { enable: true, speed: 3, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
             },
             interactivity: {
                 detect_on: 'canvas',
@@ -443,22 +510,22 @@
                         const progress = bar.getAttribute('data-progress');
                         setTimeout(() => {
                             bar.style.width = `${progress}%`;
-                        }, 300); // Pequeño retraso para que la animación sea visible al hacer scroll
-                        observer.unobserve(bar); // Deja de observar una vez que la animación se ha disparado
+                        }, 300);
+                        observer.unobserve(bar);
                     }
                 });
-            }, { threshold: 0.7 }); // Dispara cuando el 70% del elemento es visible
+            }, { threshold: 0.7 });
 
             skillBars.forEach(bar => {
                 observer.observe(bar);
             });
 
-            // Efecto de revelado (mouse-tracking glow) para elementos glassmorphic
-            document.querySelectorAll('.glassmorphic').forEach(item => {
+            // Efecto de revelado (mouse-tracking glow) para elementos Fluent-card
+            document.querySelectorAll('.fluent-card').forEach(item => {
                 item.addEventListener('mousemove', (e) => {
                     const rect = item.getBoundingClientRect();
-                    const x = e.clientX - rect.left; // x position within the element.
-                    const y = e.clientY - rect.top;  // y position within the element.
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
                     item.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
                     item.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
                 });
