@@ -1,939 +1,327 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cristhian Dávila - Portafolio Fluent 2</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Fluent 2 Semantic Colors - Dark Theme */
-            --neutral-background-1: #1C1C1C;
-            --neutral-background-2: #252525;
-            --neutral-background-3: #2D2D2D;
-            --neutral-background-4: #323232;
-            --neutral-background-5: #3A3A3A;
-            --neutral-background-6: #424242;
-                        
-            --neutral-stroke-1: rgba(255, 255, 255, 0.05);
-            --neutral-stroke-2: rgba(255, 255, 255, 0.08);
-            --neutral-stroke-3: rgba(255, 255, 255, 0.12);
-                        
-            --neutral-foreground-1: #FFFFFF;
-            --neutral-foreground-2: #F5F5F5;
-            --neutral-foreground-3: #E0E0E0;
-            --neutral-foreground-4: #BDBDBD;
-            --neutral-foreground-disabled: #6D6D6D;
-                        
-            /* Brand Colors (Fluent 2 Blue) */
-            --brand-background-1: #0078D4; /* Primary brand color */
-            --brand-background-2: #106EBE; /* Darker for hover/active */
-            --brand-background-3: #005A9F; /* Even darker */
-            --brand-background-tint: rgba(0, 120, 212, 0.1); /* Light transparent tint */
-            --brand-foreground-1: #FFFFFF; /* Text on brand background */
-            --brand-foreground-2: #0078D4; /* Text matching brand color */
-                        
-            /* Fluent 2 Design Tokens */
-            --corner-radius-none: 0px;
-            --corner-radius-small: 4px;
-            --corner-radius-medium: 8px;
-            --corner-radius-large: 12px;
-            --corner-radius-x-large: 16px;
-                        
-            --stroke-width-thin: 1px;
-            --stroke-width-thick: 2px;
-                        
-            --spacing-horizontal-xs: 4px;
-            --spacing-horizontal-s: 8px;
-            --spacing-horizontal-m: 12px;
-            --spacing-horizontal-l: 16px;
-            --spacing-horizontal-xl: 20px;
-            --spacing-horizontal-xxl: 24px;
-            --spacing-horizontal-xxxl: 32px;
-                        
-            --spacing-vertical-xs: 4px;
-            --spacing-vertical-s: 8px;
-            --spacing-vertical-m: 12px;
-            --spacing-vertical-l: 16px;
-            --spacing-vertical-xl: 20px;
-            --spacing-vertical-xxl: 24px;
-            --spacing-vertical-xxxl: 32px;
-                        
-            /* Shadows (Fluent 2 style - subtle and diffused) */
-            --shadow-2: 0 1px 2px rgba(0, 0, 0, 0.14);
-            --shadow-4: 0 2px 4px rgba(0, 0, 0, 0.14);
-            --shadow-8: 0 4px 8px rgba(0, 0, 0, 0.14);
-            --shadow-16: 0 8px 16px rgba(0, 0, 0, 0.14);
-            --shadow-28: 0 14px 28px rgba(0, 0, 0, 0.22);
-                        
-            /* Typography */
-            --font-family-base: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            --font-size-100: 10px;
-            --font-size-200: 12px;
-            --font-size-300: 14px;
-            --font-size-400: 16px;
-            --font-size-500: 20px;
-            --font-size-600: 24px;
-            --font-size-700: 28px;
-            --font-size-800: 32px;
-            --font-size-900: 40px;
-            --font-size-1000: 68px;
-                        
-            --font-weight-regular: 400;
-            --font-weight-medium: 500;
-            --font-weight-semibold: 600;
-                        
-            --line-height-100: 14px;
-            --line-height-200: 16px;
-            --line-height-300: 20px;
-            --line-height-400: 22px;
-            --line-height-500: 28px;
-            --line-height-600: 32px;
-            --line-height-700: 36px;
-            --line-height-800: 40px;
-            --line-height-900: 52px;
-            --line-height-1000: 92px;
-                        
-            /* Motion */
-            --curve-accelerate-max: cubic-bezier(0.9, 0.1, 1, 0.2);
-            --curve-accelerate-mid: cubic-bezier(0.7, 0, 1, 0.5);
-            --curve-decelerate-max: cubic-bezier(0.1, 0.9, 0.2, 1);
-            --curve-decelerate-mid: cubic-bezier(0, 0.5, 0.1, 1);
-            --curve-max-easy-ease: cubic-bezier(0.8, 0, 0.1, 1);
-            --curve-easy-ease: cubic-bezier(0.33, 0, 0.67, 1);
-            --curve-linear: cubic-bezier(0, 0, 1, 1);
-                        
-            --duration-ultra-fast: 50ms;
-            --duration-faster: 100ms;
-            --duration-fast: 150ms;
-            --duration-normal: 200ms;
-            --duration-gentle: 250ms;
-            --duration-slow: 300ms;
-            --duration-slower: 400ms;
-            --duration-ultra-slow: 500ms;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: var(--font-family-base);
-            font-size: var(--font-size-400);
-            line-height: var(--line-height-400);
-            color: var(--neutral-foreground-1);
-            background: var(--neutral-background-1);
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        /* Typography Scale */
-        .text-display {
-            font-size: var(--font-size-1000);
-            line-height: var(--line-height-1000);
-            font-weight: var(--font-weight-semibold);
-        }
-        .text-title-1 {
-            font-size: var(--font-size-900);
-            line-height: var(--line-height-900);
-            font-weight: var(--font-weight-semibold);
-        }
-        .text-title-2 {
-            font-size: var(--font-size-800);
-            line-height: var(--line-height-800);
-            font-weight: var(--font-weight-semibold);
-        }
-        .text-title-3 {
-            font-size: var(--font-size-700);
-            line-height: var(--line-height-700);
-            font-weight: var(--font-weight-semibold);
-        }
-        .text-subtitle-1 {
-            font-size: var(--font-size-500);
-            line-height: var(--line-height-500);
-            font-weight: var(--font-weight-medium);
-        }
-        .text-subtitle-2 {
-            font-size: var(--font-size-400);
-            line-height: var(--line-height-400);
-            font-weight: var(--font-weight-medium);
-        }
-        .text-body-1 {
-            font-size: var(--font-size-400);
-            line-height: var(--line-height-400);
-            font-weight: var(--font-weight-regular);
-        }
-        .text-body-2 {
-            font-size: var(--font-size-300);
-            line-height: var(--line-height-300);
-            font-weight: var(--font-weight-regular);
-        }
-        .text-caption {
-            font-size: var(--font-size-200);
-            line-height: var(--line-height-200);
-            font-weight: var(--font-weight-regular);
-        }
-        /* Layout Containers */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-horizontal-xxxl);
-        }
-        .section {
-            padding: 80px 0;
-        }
-        .grid {
-            display: grid;
-            gap: var(--spacing-vertical-xxxl);
-        }
-        .grid-2 {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-        .grid-3 {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        }
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--neutral-background-2); /* Solid background for flat look */
-            border-bottom: var(--stroke-width-thin) solid var(--neutral-stroke-2);
-            transition: all var(--duration-normal) var(--curve-decelerate-mid);
-            box-shadow: var(--shadow-2); /* Subtle shadow for elevation */
-        }
-        .nav-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: var(--spacing-vertical-l) 0;
-        }
-        .nav-brand {
-            font-size: var(--font-size-600);
-            font-weight: var(--font-weight-semibold);
-            color: var(--brand-foreground-2);
-            text-decoration: none;
-            transition: color var(--duration-fast) var(--curve-decelerate-mid);
-        }
-        .nav-brand:hover {
-            color: var(--brand-background-1);
-        }
-        .nav-links {
-            display: flex;
-            gap: var(--spacing-horizontal-l);
-            list-style: none;
-        }
-        .nav-link {
-            color: var(--neutral-foreground-2);
-            text-decoration: none;
-            font-weight: var(--font-weight-medium);
-            padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
-            border-radius: var(--corner-radius-medium);
-            transition: all var(--duration-fast) var(--curve-decelerate-mid);
-            position: relative;
-        }
-        .nav-link:hover {
-            color: var(--brand-foreground-2);
-            background: var(--brand-background-tint);
-        }
-        .nav-link:active {
-            transform: scale(0.98);
-        }
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 60px; /* Offset for fixed nav */
-        }
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: var(--spacing-horizontal-xxxl);
-            align-items: center;
-            width: 100%;
-        }
-        .hero-text h1 {
-            color: var(--neutral-foreground-1);
-            margin-bottom: var(--spacing-vertical-l);
-            max-width: 600px;
-        }
-        .hero-subtitle {
-            color: var(--brand-foreground-2);
-            margin-bottom: var(--spacing-vertical-xl);
-        }
-        .hero-description {
-            color: var(--neutral-foreground-3);
-            margin-bottom: var(--spacing-vertical-xxxl);
-            max-width: 500px;
-        }
-        .hero-image {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: var(--stroke-width-thin) solid var(--brand-background-1);
-            box-shadow: var(--shadow-8); /* Adjusted shadow for Fluent 2 */
-            transition: all var(--duration-gentle) var(--curve-decelerate-mid);
-        }
-        .hero-image:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-16); /* Adjusted shadow for Fluent 2 */
-        }
-        /* Buttons */
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-horizontal-s);
-            padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
-            border-radius: var(--corner-radius-medium);
-            font-size: var(--font-size-400);
-            font-weight: var(--font-weight-medium);
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: all var(--duration-fast) var(--curve-decelerate-mid);
-            position: relative;
-            overflow: hidden;
-        }
-        .button:focus-visible { /* Use :focus-visible for better accessibility */
-            outline: var(--stroke-width-thick) solid var(--brand-background-1);
-            outline-offset: 2px;
-            border-radius: var(--corner-radius-small);
-        }
-        .button:active {
-            transform: scale(0.98);
-        }
-        .button-primary {
-            background: var(--brand-background-1);
-            color: var(--brand-foreground-1);
-            box-shadow: var(--shadow-2);
-        }
-        .button-primary:hover {
-            background: var(--brand-background-2);
-            box-shadow: var(--shadow-4);
-        }
-        .button-primary:active {
-            background: var(--brand-background-3);
-        }
-        .button-secondary {
-            background: transparent;
-            color: var(--brand-foreground-2);
-            border: var(--stroke-width-thin) solid var(--brand-background-1);
-        }
-        .button-secondary:hover {
-            background: var(--brand-background-tint);
-            border-color: var(--brand-background-2);
-        }
-        .button-secondary:active {
-            background: var(--brand-background-1);
-            color: var(--brand-foreground-1);
-        }
-        .button-group {
-            display: flex;
-            gap: var(--spacing-horizontal-l);
-            flex-wrap: wrap;
-        }
-        /* Cards */
-        .card {
-            background: var(--neutral-background-2);
-            border: var(--stroke-width-thin) solid var(--neutral-stroke-2);
-            border-radius: var(--corner-radius-large);
-            padding: var(--spacing-vertical-xxl);
-            transition: all var(--duration-normal) var(--curve-decelerate-mid);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-2); /* Subtle base shadow for flat */
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--neutral-stroke-3), transparent);
-            opacity: 0;
-            transition: opacity var(--duration-normal) var(--curve-decelerate-mid);
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-4); /* Slightly more pronounced on hover */
-            border-color: var(--neutral-stroke-3);
-        }
-        .card:hover::before {
-            opacity: 1;
-        }
-        .card-elevated { /* For cards that need more prominence */
-            background: var(--neutral-background-3);
-            box-shadow: var(--shadow-4);
-        }
-        .card-elevated:hover {
-            box-shadow: var(--shadow-8);
-        }
-        /* Project Cards */
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: var(--corner-radius-medium);
-            margin-bottom: var(--spacing-vertical-l);
-        }
-        .project-title {
-            color: var(--neutral-foreground-1);
-            margin-bottom: var(--spacing-vertical-s);
-        }
-        .project-description {
-            color: var(--neutral-foreground-3);
-            margin-bottom: var(--spacing-vertical-xl);
-        }
-        /* Skills */
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--spacing-vertical-l);
-        }
-        .skill-name {
-            color: var(--neutral-foreground-1);
-            font-weight: var(--font-weight-medium);
-        }
-        .skill-icon {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-        }
-        .skill-bar {
-            height: 4px;
-            background: var(--neutral-background-5);
-            border-radius: var(--corner-radius-small);
-            overflow: hidden;
-            position: relative;
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1); /* Subtle inset shadow for depth */
-        }
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--brand-background-1), var(--brand-background-2));
-            border-radius: var(--corner-radius-small);
-            transition: width var(--duration-ultra-slow) var(--curve-decelerate-max);
-            position: relative;
-        }
-        .skill-progress::after { /* Shimmer effect for progress bar */
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 40px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
-            animation: shimmer 2s infinite;
-        }
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-title {
-            color: var(--neutral-foreground-1);
-            margin-bottom: var(--spacing-vertical-l);
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--brand-background-1);
-            border-radius: var(--corner-radius-small);
-        }
-        /* Contact */
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-horizontal-l);
-            padding: var(--spacing-vertical-l);
-            background: var(--neutral-background-3);
-            border: var(--stroke-width-thin) solid var(--neutral-stroke-2);
-            border-radius: var(--corner-radius-medium);
-            margin-bottom: var(--spacing-vertical-l);
-            transition: all var(--duration-fast) var(--curve-decelerate-mid);
-            box-shadow: var(--shadow-2); /* Subtle shadow */
-        }
-        .contact-item:hover {
-            background: var(--neutral-background-4);
-            border-color: var(--brand-background-1);
-            box-shadow: var(--shadow-4); /* Slightly more pronounced on hover */
-        }
-        .contact-label {
-            font-weight: var(--font-weight-medium);
-            color: var(--neutral-foreground-2);
-            min-width: 100px;
-        }
-        .contact-value a {
-            color: var(--brand-foreground-2);
-            text-decoration: none;
-            transition: color var(--duration-fast) var(--curve-decelerate-mid);
-        }
-        .contact-value a:hover {
-            color: var(--brand-background-1);
-            text-decoration: underline;
-        }
-        /* Footer */
-        .footer {
-            background: var(--neutral-background-2);
-            border-top: var(--stroke-width-thin) solid var(--neutral-stroke-2);
-            padding: var(--spacing-vertical-xxxl) 0;
-            text-align: center;
-            color: var(--neutral-foreground-4);
-            margin-top: 80px;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Shadow from bottom */
-        }
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn var(--duration-slow) var(--curve-decelerate-mid) forwards;
-        }
-        .fade-in-delay-1 { animation-delay: 0.1s; }
-        .fade-in-delay-2 { animation-delay: 0.2s; }
-        .fade-in-delay-3 { animation-delay: 0.3s; }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all var(--duration-slow) var(--curve-decelerate-mid);
-        }
-        .animate-on-scroll.visible { /* Changed from .animated to .visible */
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 var(--spacing-horizontal-l);
-            }
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: var(--spacing-vertical-xxxl);
-            }
-            .hero-text {
-                order: 2;
-            }
-            .hero-image-container { /* Added container to center image better */
-                order: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .hero-image {
-                width: 200px;
-                height: 200px;
-            }
-            .nav-links {
-                display: none;
-            }
-            .text-display {
-                font-size: var(--font-size-800);
-                line-height: var(--line-height-800);
-            }
-            .text-title-1 {
-                font-size: var(--font-size-700);
-                line-height: var(--line-height-700);
-            }
-            .button-group {
-                justify-content: center;
-            }
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
-            }
-        }
-        /* Mobile Navigation */
-        .nav-mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--neutral-foreground-1);
-            font-size: var(--font-size-600);
-            cursor: pointer;
-            padding: var(--spacing-vertical-s);
-        }
-        @media (max-width: 768px) {
-            .nav-mobile-toggle {
-                display: block;
-            }
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--neutral-background-2);
-                border-top: var(--stroke-width-thin) solid var(--neutral-stroke-2);
-                flex-direction: column;
-                padding: var(--spacing-vertical-l);
-                transform: translateY(-100%);
-                opacity: 0;
-                pointer-events: none;
-                transition: all var(--duration-normal) var(--curve-decelerate-mid);
-            }
-            .nav-links.active {
-                display: flex;
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: all;
-            }
-        }
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-        /* Focus styles */
-        :focus-visible {
-            outline: 2px solid var(--brand-background-1);
-            outline-offset: 2px;
-            border-radius: var(--corner-radius-small);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Cristhian Dávila - Portafolio Moderno</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass {
+      background: rgba(30,41,59,0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .light .glass { background: rgba(255,255,255,0.7); color: #222; }
+    .transition-all { transition: all 0.3s cubic-bezier(.4,0,.2,1); }
+    .nav-blur {
+      background: rgba(30,41,59,0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .light .nav-blur { background: rgba(255,255,255,0.7); }
+    .mode-toggle {
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.2s;
+    }
+    .mode-toggle:hover { background: rgba(255,255,255,0.2); }
+  </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container">
-            <div class="nav-content">
-                <a href="#inicio" class="nav-brand">Cristhian Dávila</a>
-                <button class="nav-mobile-toggle" onclick="toggleMobileNav()">☰</button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-                    <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
-                    <li><a href="#certificaciones" class="nav-link">Certificaciones</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
-            </div>
+<body class="bg-slate-900 text-white transition-all">
+  <!-- Navbar -->
+  <nav class="nav-blur fixed w-full z-50 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <a href="#inicio" class="font-bold text-xl text-blue-400 tracking-tight">Cristhian Dávila</a>
+      <ul class="hidden md:flex gap-8 font-medium">
+        <li><a href="#inicio" class="hover:text-blue-400 transition">Inicio</a></li>
+        <li><a href="#proyectos" class="hover:text-blue-400 transition">Proyectos</a></li>
+        <li><a href="#habilidades" class="hover:text-blue-400 transition">Habilidades</a></li>
+        <li><a href="#certificaciones" class="hover:text-blue-400 transition">Certificaciones</a></li>
+        <li><a href="#contacto" class="hover:text-blue-400 transition">Contacto</a></li>
+      </ul>
+      <div class="flex items-center gap-2">
+        
+        <button class="md:hidden mode-toggle" onclick="toggleMobileNav()" aria-label="Menú móvil">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Nav -->
+    <div id="mobileNav" class="md:hidden fixed top-16 left-0 w-full bg-slate-900/90 backdrop-blur-lg border-t border-slate-700 hidden transition-all">
+      <ul class="flex flex-col gap-6 p-6 text-lg">
+        <li><a href="#inicio" class="hover:text-blue-400 transition">Inicio</a></li>
+        <li><a href="#proyectos" class="hover:text-blue-400 transition">Proyectos</a></li>
+        <li><a href="#habilidades" class="hover:text-blue-400 transition">Habilidades</a></li>
+        <li><a href="#certificaciones" class="hover:text-blue-400 transition">Certificaciones</a></li>
+        <li><a href="#contacto" class="hover:text-blue-400 transition">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Hero -->
+  <section id="inicio" class="min-h-screen flex items-center justify-center pt-24 pb-12 bg-gradient-to-br from-blue-900 via-slate-900 to-slate-800">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+      <div data-aos="fade-right">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 text-blue-400">Hola, soy Cristhian Dávila</h1>
+        <p class="text-xl mb-2 text-blue-200 font-semibold">Desarrollador Proactivo</p>
+        <p class="text-lg mb-8 text-slate-300">
+          Desarrollador de software y técnico IT enfocado en soluciones ligeras, rápidas y funcionales.
+Especializado en la creación de sitios web optimizados y soporte técnico eficiente, combino diseño moderno con un enfoque técnico orientado al máximo rendimiento y bajo consumo de recursos. Ideal para quienes buscan calidad sin comprometer velocidad.
+        </p>
+        <div class="flex gap-4">
+          <a href="#proyectos" class="glass px-6 py-3 font-semibold text-blue-400 hover:bg-blue-400 hover:text-white transition-all shadow-lg">Ver Proyectos</a>
+          <a href="#contacto" class="glass px-6 py-3 font-semibold text-white hover:bg-blue-400 hover:text-white transition-all shadow-lg">Contactar</a>
         </div>
-    </nav>
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="text-display fade-in">Hola, soy Cristhian Dávila</h1>
-                    <p class="text-subtitle-1 hero-subtitle fade-in fade-in-delay-1">Desarrollador Proactivo</p>
-                    <p class="text-body-1 hero-description fade-in fade-in-delay-2">
-                        Joven apasionado con dominio de tecnologías como HTML, CSS, JavaScript y Python.
-                        Experiencia en el desarrollo de soluciones web y la implementación de automatizaciones.
-                        Siempre buscando aprender y aplicar nuevas tecnologías para crear experiencias digitales innovadoras.
-                    </p>
-                    <div class="button-group fade-in fade-in-delay-3">
-                        <a href="#proyectos" class="button button-primary">Ver Proyectos</a>
-                        <a href="#contacto" class="button button-secondary">Contactar</a>
-                    </div>
-                </div>
-                <div class="hero-image-container">
-                    <img src="i'm.jpg" alt="Cristhian Dávila" class="hero-image fade-in fade-in-delay-2">
-                </div>
-            </div>
+      </div>
+      <div class="flex justify-center" data-aos="fade-left">
+        <img src="i'm.jpg" alt="Cristhian Dávila" class="rounded-full w-64 h-64 object-cover shadow-2xl border-4 border-blue-400 glass hover:scale-105 transition-all">
+      </div>
+    </div>
+  </section>
+  <!-- Projects -->
+  <section id="proyectos" class="py-20 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12 text-blue-400" data-aos="fade-up">Proyectos</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <!-- Proyecto 1 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in">
+          <img src="shop_sim.png" alt="Lista de Tareas Web" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">Lista de tareas Web</h3>
+          <p class="text-slate-300 mb-4">Aplicación web interactiva para gestionar tus tareas diarias, con funcionalidades de añadir, editar y eliminar.</p>
+          <a href="https://github.com/CrisDav889/to-do-list" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold">
+            <i data-lucide="github" class="w-5 h-5"></i> Ver en GitHub
+          </a>
         </div>
-    </section>
-    <!-- Projects Section -->
-    <section id="proyectos" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="text-title-2 section-title animate-on-scroll">Proyectos</h2>
-            </div>
-            <div class="grid grid-3">
-                <div class="card animate-on-scroll">
-                    <img src="shop_sim.png" alt="Lista de Tareas Web" class="project-image">
-                    <h3 class="text-subtitle-1 project-title">Lista de tareas Web</h3>
-                    <p class="text-body-1 project-description">
-                        Aplicación web interactiva para gestionar tus tareas diarias, con funcionalidades de añadir, editar y eliminar.
-                    </p>
-                    <a href="https://github.com/CrisDav889/to-do-list" target="_blank" class="button button-primary">
-                        <i data-lucide="github" size="16"></i> Ver en GitHub
-                    </a>
-                </div>
-                                
-                <div class="card animate-on-scroll">
-                    <img src="clima.png" alt="API del clima" class="project-image">
-                    <h3 class="text-subtitle-1 project-title">API del clima</h3>
-                    <p class="text-body-1 project-description">
-                        Una interfaz sencilla para consultar el clima en tiempo real de cualquier ciudad del mundo, utilizando APIs públicas.
-                    </p>
-                    <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real" target="_blank" class="button button-primary">
-                        <i data-lucide="github" size="16"></i> Ver en GitHub
-                    </a>
-                </div>
-                                
-                <div class="card animate-on-scroll">
-                    <img src="sistemas de ecuaciones.png" alt="Calculadora de Ecuaciones" class="project-image">
-                    <h3 class="text-subtitle-1 project-title">Calculadora de sistemas de ecuaciones</h3>
-                    <p class="text-body-1 project-description">
-                        Herramienta programada en Python para resolver sistemas de ecuaciones lineales 2x2, ideal para estudiantes y análisis rápido.
-                    </p>
-                    <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2" target="_blank" class="button button-primary">
-                        <i data-lucide="github" size="16"></i> Ver en GitHub
-                    </a>
-                </div>
-            </div>
+        <!-- Proyecto 2 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+          <img src="clima.png" alt="API del clima" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">API del clima</h3>
+          <p class="text-slate-300 mb-4">Una interfaz sencilla para consultar el clima en tiempo real de cualquier ciudad del mundo, utilizando APIs públicas.</p>
+          <a href="https://github.com/CrisDav889/Clima-en-Tiempo-Real" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold">
+            <i data-lucide="github" class="w-5 h-5"></i> Ver en GitHub
+          </a>
         </div>
-    </section>
-    <!-- Skills Section -->
-    <section id="habilidades" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="text-title-2 section-title animate-on-scroll">Habilidades</h2>
-            </div>
-            <div class="grid grid-2">
-                <div class="card animate-on-scroll">
-                    <div class="skill-header">
-                        <span class="text-subtitle-2 skill-name">JavaScript</span>
-                        <i data-lucide="code" size="32" class="skill-icon"></i>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="85"></div>
-                    </div>
-                </div>
-                                
-                <div class="card animate-on-scroll">
-                    <div class="skill-header">
-                        <span class="text-subtitle-2 skill-name">Inteligencia Artificial / Prompt Engineering</span>
-                        <i data-lucide="brain" size="32" class="skill-icon"></i>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="75"></div>
-                    </div>
-                </div>
-                                
-                <div class="card animate-on-scroll">
-                    <div class="skill-header">
-                        <span class="text-subtitle-2 skill-name">Python</span>
-                        <i data-lucide="brackets" size="32" class="skill-icon"></i>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="70"></div>
-                    </div>
-                </div>
-                                
-                <div class="card animate-on-scroll">
-                    <div class="skill-header">
-                        <span class="text-subtitle-2 skill-name">HTML, CSS</span>
-                        <i data-lucide="layers" size="32" class="skill-icon"></i>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="65"></div>
-                    </div>
-                </div>
-            </div>
+        <!-- Proyecto 3 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+          <img src="sistemas de ecuaciones.png" alt="Calculadora de Ecuaciones" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">Calculadora de sistemas de ecuaciones</h3>
+          <p class="text-slate-300 mb-4">Herramienta programada en Python para resolver sistemas de ecuaciones lineales 2x2, ideal para estudiantes y análisis rápido.</p>
+          <a href="https://github.com/CrisDav889/Calculadora-de-Sistemas-de-Ecuaciones-2x2" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold">
+            <i data-lucide="github" class="w-5 h-5"></i> Ver en GitHub
+          </a>
         </div>
-    </section>
-    <!-- Certifications Section -->
-    <section id="certificaciones" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="text-title-2 section-title animate-on-scroll">Certificaciones</h2>
-            </div>
-            <div class="grid grid-3">
-                <div class="card animate-on-scroll">
-                    <img src="Certificado 1.png" alt="Certificado de Competencias Digitales" class="project-image">
-                    <h3 class="text-subtitle-1 project-title">Competencias digitales para profesionales</h3>
-                    <p class="text-body-1 project-description">
-                        <strong>Emitido por:</strong> Google Skillshop<br>
-                        <strong>Fecha:</strong> Diciembre, 2024
-                    </p>
-                    <a href="https://skillshop.exceedlms.com/student/award/dyFtXiXAPHiqx3QHLchWhmXg" target="_blank" class="button button-primary">
-                        Ver Credencial
-                    </a>
-                </div>
-                                
-                <div class="card animate-on-scroll">
-                    <img src="Certificado 2.png" alt="Certificado de Desarrollo Web HTML/CSS" class="project-image">
-                    <h3 class="text-subtitle-1 project-title">Introducción al desarrollo web HTML/CSS 2/2</h3>
-                    <p class="text-body-1 project-description">
-                        <strong>Emitido por:</strong> Google Skillshop<br>
-                        <strong>Fecha:</strong> Diciembre, 2024
-                    </p>
-                    <a href="https://skillshop.exceedlms.com/student/award/7XDESQDfAPLGj3uWpp26sFZs" target="_blank" class="button button-primary">
-                        Ver Credencial
-                    </a>
-                </div>
-                                
-                <div class="card animate-on-scroll">
-                    <img src="Certificado 3.png" alt="Certificado de Python para Ciencia de Datos" class="project-image">
-                    <h3 class="text-subtitle-1 project-title">Python 101 for data science</h3>
-                    <p class="text-body-1 project-description">
-                        <strong>Emitido por:</strong> Cognitive Class by IBM<br>
-                        <strong>Fecha:</strong> Diciembre, 2024
-                    </p>
-                    <a href="https://courses.cognitiveclass.ai/certificates/542e80f5531744f9be80d3d3407cae8e" target="_blank" class="button button-primary">
-                        Ver Credencial
-                    </a>
-                </div>
-            </div>
+        <!-- Proyecto 4 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+          <img src="Gestor de tareas mejorado.png" alt="Proyecto 4" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">Gestor de tareas estilo notion</h3>
+          <p class="text-slate-300 mb-4">Un gestor de tareas que permite organizar y priorizar actividades de manera eficiente.</p>
+          <a href="https://hmwmanager.netlify.app/" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold">
+            <i data-lucide="globe" class="w-5 h-5"></i> Ver en funcionamiento
+          </a>
         </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contacto" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="text-title-2 section-title animate-on-scroll">Contacto</h2>
-            </div>
-            <div class="grid">
-                <div class="card card-elevated animate-on-scroll" style="padding: var(--spacing-vertical-xxl);">
-                    <div class="contact-item">
-                        <div class="contact-label text-body-1">Email:</div>
-                        <div class="contact-value text-body-1">
-                            <a href="mailto:davcris889@gmail.com">davcris889@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-label text-body-1">Instagram:</div>
-                        <div class="contact-value text-body-1">
-                            <a href="https://www.instagram.com/cris_dav47" target="_blank">cris_dav47</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-label text-body-1">LinkedIn:</div>
-                        <div class="contact-value text-body-1">
-                            <a href="https://www.linkedin.com/in/cristhian-davila/" target="_blank">Cristhian Dávila</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Proyecto 5 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="400">
+          <img src="distro.png" alt="Proyecto 5" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">Personalización Completa de mi distro de linux (Arch-based) enfocada en el rendimiento y la estética</h3>
+          <p class="text-slate-300 mb-4">Usando las herramientas basicas de Arch Linux y personalizando el entorno de escritorio bspwm para mejorar la productividad, la estética visual y sobre todo el rendimiento.</p>
+          
         </div>
-    </section>
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="text-body-2">&copy; 2024 Cristhian Andrés Dávila Morales. Todos los derechos reservados.</p>
+        <!-- Proyecto 6 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="500">
+          <img src="tubox.png" alt="Proyecto 6" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">TuBoxExpress (2024-2025)</h3>
+          <p class="text-slate-300 mb-4">TuBoxExpress es una web enfocada en importaciones personales desde EE. UU. a Guatemala, desarrollada con HTML, CSS, JavaScript y Bootstrap, priorizando el rendimiento, la claridad y la experiencia del usuario. Incluye formularios funcionales, diseño responsivo, integración con redes sociales y un enfoque comercial claro para convertir visitantes en clientes, todo optimizado sin frameworks pesados.</p>
+          <a href="https://tuboxexpress.com/" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold">
+            <i data-lucide="globe" class="w-5 h-5"></i> Ver en funcionamiento
+          </a>
         </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons(); // Initialize Lucide Icons after DOM is loaded
+      </div>
+    </div>
+  </section>
+  <!-- Skills -->
+  <section id="habilidades" class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12 text-blue-400" data-aos="fade-up">Habilidades</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Skill JS -->
+        <div class="glass p-6" data-aos="fade-right">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-semibold text-lg text-blue-300">JavaScript</span>
+            <i data-lucide="code" class="w-8 h-8 text-blue-400"></i>
+          </div>
+          <div class="w-full bg-slate-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full transition-all" style="width:60%"></div>
+          </div>
+        </div>
+        <!-- Skill IA -->
+        <div class="glass p-6" data-aos="fade-left">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-semibold text-lg text-blue-300">Inteligencia Artificial / Prompt Engineering</span>
+            <i data-lucide="brain" class="w-8 h-8 text-blue-400"></i>
+          </div>
+          <div class="w-full bg-slate-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full transition-all" style="width:55%"></div>
+          </div>
+        </div>
+        <!-- Skill Python -->
+        <div class="glass p-6" data-aos="fade-right" data-aos-delay="100">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-semibold text-lg text-blue-300">Python</span>
+            <i data-lucide="brackets" class="w-8 h-8 text-blue-400"></i>
+          </div>
+          <div class="w-full bg-slate-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full transition-all" style="width:90%"></div>
+          </div>
+        </div>
+        <!-- Skill HTML/CSS -->
+        <div class="glass p-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-semibold text-lg text-blue-300">HTML, CSS</span>
+            <i data-lucide="layers" class="w-8 h-8 text-blue-400"></i>
+          </div>
+          <div class="w-full bg-slate-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full transition-all" style="width:85%"></div>
+          </div>
+        </div>
+        <!-- Skill IT Support -->
+        <div class="glass p-6" data-aos="fade-right" data-aos-delay="200">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-semibold text-lg text-blue-300">Soporte Técnico IT</span>
+            <i data-lucide="headphones" class="w-8 h-8 text-blue-400"></i>
+          </div>
+          <div class="w-full bg-slate-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full transition-all" style="width:90%"></div>
+          </div>
+        </div>
+        <!-- Skill Linux -->
+        <div class="glass p-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-semibold text-lg text-blue-300">Linux</span>
+            <i data-lucide="server" class="w-8 h-8 text-blue-400"></i>
+          </div>
+          <div class="w-full bg-slate-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full transition-all" style="width:92%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Certifications -->
+  <section id="certificaciones" class="py-20 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12 text-blue-400" data-aos="fade-up">Certificaciones</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <!-- Certificado 1 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in">
+          <img src="Certificado 1.png" alt="Certificado de Competencias Digitales" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">Competencias digitales para profesionales</h3>
+          <p class="text-slate-300 mb-4">
+            <strong>Emitido por:</strong> Google Skillshop<br>
+            <strong>Fecha:</strong> Diciembre, 2024
+          </p>
+          <a href="https://skillshop.exceedlms.com/student/award/dyFtXiXAPHiqx3QHLchWhmXg" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold">
+            <i data-lucide="award" class="w-5 h-5"></i> Ver Credencial
+          </a>
+        </div>
+        <!-- Certificado 2 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+          <img src="Certificado 2.png" alt="Certificado de Desarrollo Web HTML/CSS" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">Introducción al desarrollo web HTML/CSS 2/2</h3>
+          <p class="text-slate-300 mb-4">
+            <strong>Emitido por:</strong> Google Skillshop<br>
+            <strong>Fecha:</strong> Diciembre, 2024
+          </p>
+          <a href="https://skillshop.exceedlms.com/student/award/7XDESQDfAPLGj3uWpp26sFZs" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold">
+            <i data-lucide="award" class="w-5 h-5"></i> Ver Credencial
+          </a>
+        </div>
+        <!-- Certificado 3 -->
+        <div class="glass p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+          <img src="Certificado 3.png" alt="Certificado de Python para Ciencia de Datos" class="rounded-xl mb-4 w-full h-40 object-cover">
+          <h3 class="text-xl font-semibold mb-2 text-blue-300">Python 101 for data science</h3>
+          <p class="text-slate-300 mb-4">
+            <strong>Emitido por:</strong> Cognitive Class by IBM<br>
+            <strong>Fecha:</strong> Diciembre, 2024
+          </p>
+          <a href="https://courses.cognitiveclass.ai/certificates/542e80f5531744f9be80d3d3407cae8e" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold">
+            <i data-lucide="award" class="w-5 h-5"></i> Ver Credencial
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact -->
+  <section id="contacto" class="py-20 bg-gradient-to-br from-blue-950 via-slate-900 to-slate-800">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12 text-blue-400" data-aos="fade-up">Contacto</h2>
+      <div class="glass p-8 shadow-xl" data-aos="fade-up">
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center gap-4">
+            <span class="font-semibold text-blue-300 w-32">Email:</span>
+            <a href="mailto:davcris889@gmail.com" class="text-blue-400 hover:text-blue-200 font-semibold">davcris889@gmail.com</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="font-semibold text-blue-300 w-32">Instagram:</span>
+            <a href="https://www.instagram.com/cris_dav47" target="_blank" class="text-blue-400 hover:text-blue-200 font-semibold">cris_dav47</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="font-semibold text-blue-300 w-32">LinkedIn:</span>
+            <a href="https://www.linkedin.com/in/cristhian-davila/" target="_blank" class="text-blue-400 hover:text-blue-200 font-semibold">Cristhian Dávila</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-slate-950 py-8 text-center text-slate-400">
+    <p class="text-sm">&copy; 2024 Cristhian Andrés Dávila Morales. Todos los derechos reservados.</p>
+  </footer>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+    lucide.createIcons();
 
-            // Mobile navigation toggle
-            window.toggleMobileNav = function() {
-                const navLinks = document.getElementById('navLinks');
-                navLinks.classList.toggle('active');
-            };
+    // Dark/Light mode toggle
+    const modeToggle = document.getElementById('modeToggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      if(document.body.classList.contains('light')) {
+        modeToggle.innerHTML = '<i data-lucide="sun" class="w-6 h-6"></i>';
+      } else {
+        modeToggle.innerHTML = '<i data-lucide="moon" class="w-6 h-6"></i>';
+      }
+      lucide.createIcons();
+    });
 
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('.nav-links a').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const navbarHeight = document.querySelector('.nav').offsetHeight;
-                        const offsetTop = targetElement.offsetTop - navbarHeight;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                        // Close mobile nav after clicking a link
-                        const navLinks = document.getElementById('navLinks');
-                        if (navLinks.classList.contains('active')) {
-                            navLinks.classList.remove('active');
-                        }
-                    }
-                });
-            });
-
-            // Intersection Observer for scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all elements with animate-on-scroll class
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-
-            // Skills progress animation
-            const skillBars = document.querySelectorAll('.skill-progress');
-            const skillObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const bar = entry.target;
-                        const progress = bar.getAttribute('data-progress');
-                        // Ensure animation only runs once per load/visibility
-                        if (bar.style.width === '' || bar.style.width === '0%') {
-                           setTimeout(() => {
-                               bar.style.width = `${progress}%`;
-                           }, 300);
-                        }
-                        skillObserver.unobserve(bar); // Stop observing after animation
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            // Re-observe skill bars when their container becomes visible to trigger progress animation
-            const skillSection = document.getElementById('habilidades');
-            if (skillSection) {
-                new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            skillBars.forEach(bar => {
-                                const progress = bar.getAttribute('data-progress');
-                                bar.style.width = `${progress}%`;
-                            });
-                        } else {
-                             // Reset skill bars when out of view (optional, for re-animation on scroll up/down)
-                             skillBars.forEach(bar => {
-                                 bar.style.width = '0%';
-                             });
-                        }
-                    });
-                }, { threshold: 0.2 }).observe(skillSection);
-            }
-
-
-            // Navbar background on scroll
-            window.addEventListener('scroll', () => {
-                const navbar = document.querySelector('.nav');
-                if (window.scrollY > 0) {
-                    navbar.style.background = 'rgba(28, 28, 28, 0.95)';
-                } else {
-                    navbar.style.background = 'rgba(28, 28, 28, 0.9)';
-                }
-            });
-        });
-    </script>
+    // Mobile nav toggle
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('hidden');
+    }
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a, #mobileNav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if(target) {
+          window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+        }
+        document.getElementById('mobileNav').classList.add('hidden');
+      });
+    });
+  </script>
 </body>
 </html>
