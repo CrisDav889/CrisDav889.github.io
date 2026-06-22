@@ -1,180 +1,167 @@
-/**
- * Portafolio - Main JavaScript
- * Handles navigation, animations, and interactions
- */
-
-// DOM Elements
 const nav = document.getElementById('nav');
 const mobileMenu = document.getElementById('mobileMenu');
+const menuToggle = document.querySelector('[data-menu-toggle]');
+const menuClose = document.querySelector('[data-menu-close]');
+const menuLinks = document.querySelectorAll('[data-menu-link]');
 
-/**
- * Initialize all event listeners
- */
 function init() {
   setupNavbar();
   setupMobileMenu();
   setupSmoothScroll();
-  setupAnimations();
+  setupReveal();
+  setupCarousel();
+  setupHeroInteraction();
+  setupCarouselTouch();
 }
 
-/**
- * Navbar scroll behavior
- */
 function setupNavbar() {
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
+    if (nav) {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }
   });
 }
 
-/**
- * Mobile menu toggle
- */
 function setupMobileMenu() {
-  window.toggleMenu = function() {
+  if (!mobileMenu) return;
+
+  const toggleMenu = () => {
     mobileMenu.classList.toggle('active');
     document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
   };
 
-  window.closeMenu = function() {
-    mobileMenu.classList.remove('active');
-    document.body.style.overflow = '';
-  };
+  menuToggle?.addEventListener('click', toggleMenu);
+  menuClose?.addEventListener('click', toggleMenu);
+  menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
 }
 
-/**
- * Smooth scroll for anchor links
- */
 function setupSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        window.scrollTo({ 
-          top: target.offsetTop - 80, 
-          behavior: 'smooth' 
-        });
-        closeMenu();
-      }
+    anchor.addEventListener('click', event => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      const offset = target.offsetTop - 90;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     });
   });
 }
 
-/**
- * Anime.js animations
- */
-function setupAnimations() {
-  if (typeof anime === 'undefined') return;
+function setupReveal() {
+  const elements = document.querySelectorAll('.reveal');
+  if (!elements.length) return;
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Hero animations
-    const heroTimeline = anime.timeline({ easing: 'easeOutExpo' });
-    
-    heroTimeline
-      .add({
-        targets: '.hero-label',
-        opacity: [0, 1],
-        translateY: [20, 0],
-        duration: 800
-      })
-      .add({
-        targets: '.hero-title',
-        opacity: [0, 1],
-        translateY: [30, 0],
-        duration: 1000
-      }, '-=500')
-      .add({
-        targets: '.hero-subtitle',
-        opacity: [0, 1],
-        duration: 600
-      }, '-=600')
-      .add({
-        targets: '.hero-desc',
-        opacity: [0, 1],
-        duration: 600
-      }, '-=400')
-      .add({
-        targets: '.hero-cta .btn',
-        opacity: [0, 1],
-        translateY: [15, 0],
-        duration: 500,
-        delay: anime.stagger(100)
-      }, '-=400')
-      .add({
-        targets: '.hero-image img',
-        opacity: [0, 0.15],
-        duration: 1500
-      }, '-=1000');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
 
-    // About section
-    anime({
-      targets: '.about-content',
-      opacity: [0, 1],
-      translateX: [30, 0],
-      duration: 800,
-      delay: 300,
-      easing: 'easeOutExpo'
-    });
+  elements.forEach(el => observer.observe(el));
+}
 
-    // Projects
-    anime({
-      targets: '.project-card',
-      opacity: [0, 1],
-      translateY: [50, 0],
-      duration: 800,
-      delay: anime.stagger(150),
-      easing: 'easeOutExpo'
-    });
+function setupCarousel() {
+  const carousel = document.querySelector('[data-carousel]');
+  const track = document.querySelector('[data-carousel-track]');
+  if (!carousel || !track) return;
 
-    // Skills
-    anime({
-      targets: '.skill-item',
-      opacity: [0, 1],
-      translateY: [30, 0],
-      duration: 600,
-      delay: anime.stagger(100),
-      easing: 'easeOutExpo'
-    });
-
-    // Quote
-    anime({
-      targets: '.quote-text, .quote-author',
-      opacity: [0, 1],
-      translateY: [20, 0],
-      duration: 1000,
-      delay: anime.stagger(200),
-      easing: 'easeOutExpo'
-    });
-
-    // Certifications
-    anime({
-      targets: '.cert-card',
-      opacity: [0, 1],
-      translateY: [30, 0],
-      duration: 700,
-      delay: anime.stagger(120),
-      easing: 'easeOutExpo'
-    });
-
-    // Contact
-    anime({
-      targets: '.contact-info > *',
-      opacity: [0, 1],
-      translateY: [20, 0],
-      duration: 600,
-      delay: anime.stagger(100),
-      easing: 'easeOutExpo'
-    });
-
-    // Footer
-    anime({
-      targets: '.footer-inner',
-      opacity: [0, 1],
-      duration: 800,
-      easing: 'easeOutExpo'
+  carousel.querySelectorAll('[data-carousel-btn]').forEach(button => {
+    button.addEventListener('click', () => {
+      const direction = button.dataset.carouselBtn === 'next' ? 1 : -1;
+      const scrollAmount = track.clientWidth * 0.75 * direction;
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   });
 }
 
-// Initialize when DOM is ready
+function setupCarouselTouch() {
+  const track = document.querySelector('[data-carousel-track]');
+  if (!track) return;
+
+  let startX = 0;
+  let scrollLeft = 0;
+  let isDragging = false;
+
+  track.addEventListener('touchstart', e => {
+    startX = e.touches[0].pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    isDragging = true;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeft - walk;
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    isDragging = false;
+  }, { passive: true });
+
+  track.addEventListener('mousedown', e => {
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    isDragging = true;
+    track.style.cursor = 'grabbing';
+  });
+
+  track.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  track.addEventListener('mouseup', () => {
+    isDragging = false;
+    track.style.cursor = 'grab';
+  });
+
+  track.addEventListener('mouseleave', () => {
+    isDragging = false;
+    track.style.cursor = 'grab';
+  });
+}
+
+function setupHeroInteraction() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (isTouchDevice) {
+    let angle = 0;
+    setInterval(() => {
+      angle += 0.008;
+      const x = Math.sin(angle) * 30;
+      const y = Math.cos(angle * 0.7) * 20;
+      hero.style.setProperty('--mx', `${x}px`);
+      hero.style.setProperty('--my', `${y}px`);
+    }, 50);
+    return;
+  }
+
+  const updateVars = (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = event.clientX - rect.left - rect.width / 2;
+    const y = event.clientY - rect.top - rect.height / 2;
+    hero.style.setProperty('--mx', `${x}px`);
+    hero.style.setProperty('--my', `${y}px`);
+  };
+
+  hero.addEventListener('mousemove', updateVars);
+  hero.addEventListener('mouseleave', () => {
+    hero.style.setProperty('--mx', '0px');
+    hero.style.setProperty('--my', '0px');
+  });
+}
+
 document.addEventListener('DOMContentLoaded', init);
